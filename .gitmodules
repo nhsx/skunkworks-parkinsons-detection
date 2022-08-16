@@ -1,0 +1,6 @@
+[submodule "ext/apex"]
+	path = ext/apex
+	url = git@github.com:NVIDIA/apex.git
+[submodule "ext/ideepcolor"]
+	path = ext/ideepcolor
+	url = git@github.com:PolygeistLtd/interactive-deep-colorization.git

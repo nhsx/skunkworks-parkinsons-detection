@@ -32,15 +32,18 @@ A [full report](docs/report.pdf) including background, model selection, performa
 
 ## Getting Started
 
-1. Clone this repository (and its submodules) ***TODO: revise url here and for report.pdf above upon publication***
+1. Clone this repository (and its submodules) ***N.B. This repo utilises Large File Storage and so requires [git-lfs](https://git-lfs.github.com/) to be available.***
 - ```git clone --recurse-submodules -j8 git@github.com:nhsx/skunkworks-parkinsons-detection.git```
+Note, if the submodules do not automaticaly download they should be manually downloaded
+(this occurs when they are not in the master branch)
+- ```git submodule update --init```
 2. Download the colorization model weights (run in the project root folder)
 - ```wget http://colorization.eecs.berkeley.edu/siggraph/models/caffemodel.pth -O ext/ideepcolor/models/pytorch/caffemodel.pth```
 3. Create the virtual environment as below
 
 ## Environment Setup
 The system has been developed on Ubuntu 20.04.4 with the following prerequisites:
-- build-essential, wget, git, git-lfs, python3-dev, cmake, libpng-dev, libjpeg-dev, and the CUDA toolkit version 11.3-7.
+- build-essential, wget, git, git-lfs, python3-dev, cmake, libpng-dev, libjpeg-dev, and the CUDA toolkit version 11.7 (i.e. cuda_11.7.0_515.43.04_linux.run).
 
 To create the virtual environment, run:
 ```shell
@@ -56,7 +59,7 @@ Before using the utilities the project must be added to the Python path for each
 ```shell
 export PYTHONPATH="$PYTHONPATH:$(pwd)"  # Run in the project root folder
 ```
-If the NVIDIA APEX build/install fails for the current environment, manual installation can be completed as follows:
+If the NVIDIA APEX build/install fails for the current environment the CUDA 11.3 library is suggested. Manual installation can then be completed as follows:
 ```shell
 cd ext/apex
 CUDA_HOME=/usr/local/cuda-11.3 pip install -v \
@@ -85,6 +88,8 @@ The codebase performs three functions (artificial staining, classifier training 
   - data_faker: Fake data generator (including examples)
 - walkthrough: End-to-end demonstration of the CLI
 - ext: External dependencies
+
+In addition to an example fake dataset and directory structure (Data/fake), a tar file containing this empty directory structure is included in the 'docs' folder for use with real data. This defined structure is required and expected by the CLI tools, the example code and the notebook.
 
 ## NHS AI Lab Skunkworks
 The project is supported by the NHS AI Lab Skunkworks, which exists within the NHS AI Lab at NHSX to support the health and care community to rapidly progress ideas from the conceptual stage to a proof of concept.

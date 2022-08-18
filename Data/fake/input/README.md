@@ -2,19 +2,19 @@
 
 ## Create PD slides (fake)
 ```shell
-mkdir polygeist/data_faker/example/PD
+mkdir -p Data/fake/input/PD
 
 python polygeist/CLI/create_fake_slide_dataset.py \
-  --output_path polygeist/data_faker/example/PD \
+  --output_path Data/fake/input/PD \
   --seed_start 100 \
   --quantity 10
 ```
 ## Create Control slides (fake)
 ```shell
-mkdir polygeist/data_faker/example/Control
+mkdir -p Data/fake/input/Control
 
 python polygeist/CLI/create_fake_slide_dataset.py \
-  --output_path polygeist/data_faker/example/Control \
+  --output_path Data/fake/input/Control \
   --seed_start 200 \
   --quantity 10 \
   --is_control

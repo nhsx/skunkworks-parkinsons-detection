@@ -1,52 +1,33 @@
 name: Deploy polygeist docs
 
 on:
-  # Runs on pushes targeting the default branch
   push:
-#    branches: ["main"]
-    branches:
-
-  # Allows you to run this workflow manually from the Actions tab, for main branch
-  workflow_dispatch:
+    branches-ignore:
+      - "gh-pages"
 
 jobs:
-  # Build job
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v2
+
       - name: Setup Python
         uses: actions/setup-python@v1
         with:
           python-version: "3.9"
           architecture: "x64"
+
       - name: Install dependencies
         run: |
           python3 -m pip install --upgrade pip
           python3 -m pip install -r ./requirements-docs.txt
+
       - name: Build docs
         run: |
           sh make_docs.sh
 
-  # Deployment job
-  deploy:
-    permissions:
-      pages: write # to deploy to Pages
-      id-token: write # to verify the deployment originates from an appropriate source
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Setup Pages
-        uses: actions/configure-pages@v1
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          # Upload only html folder
-          path: "html"
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v1
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./html

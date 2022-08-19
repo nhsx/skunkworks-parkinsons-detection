@@ -6,7 +6,7 @@ on:
 #    branches: ["main"]
     branches:
 
-  # Allows you to run this workflow manually from the Actions tab
+  # Allows you to run this workflow manually from the Actions tab, for main branch
   workflow_dispatch:
 
 jobs:

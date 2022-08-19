@@ -47,6 +47,20 @@ def _train_model() -> None:
         help="[str] Path to the output folder"
         + " (where model weight checkpoints will be saved).",
     )
+    parser.add_argument(
+        "--batch_size",
+        "-b",
+        type=int,
+        default=32,
+        help="[int] Size of minibatches.",
+    )
+    parser.add_argument(
+        "--num_epochs",
+        "-n",
+        type=int,
+        default=32,
+        help="[int] Number of training epochs.",
+    )
 
     # Read arguments from the command line
     args = parser.parse_args()
@@ -59,7 +73,9 @@ def _train_model() -> None:
     _ensure_exists(args.model_dump_dir)
 
     # Do training
-    latest_model_name = train_model(args.training_dump_path, args.model_dump_dir)
+    latest_model_name = train_model(
+        args.training_dump_path, args.model_dump_dir, args.batch_size, args.num_epochs
+    )
     print(f"Final model saved as: {latest_model_name}")
 
 

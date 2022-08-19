@@ -45,6 +45,8 @@ class SyntheticSlide(Slide):
         super().__init__()
         # populate with synthetic data
         self._synthetic_data = lycon.load(filename)
+        if self._synthetic_data is None:
+            raise IOError(f"Error loading {filename}")
 
         # In native slide format our pixels are always .5um, to
         # make all the processing realistic we need to determine our
@@ -67,6 +69,8 @@ class AperioSlide(Slide):
         super().__init__()
         # populate with real data
         slide_handle = slideio.open_slide(filename, "SVS")
+        # Unfortunately slideio has a bug which prevents failure checking
+
         self._root_scene = slide_handle.get_scene(0)
         # pixel width in microns
         self._px_um = 0.5040

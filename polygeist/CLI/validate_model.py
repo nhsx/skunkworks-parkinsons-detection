@@ -40,6 +40,13 @@ def _validate_model() -> None:
         help="[str] Path to the model weight (checkpoint) data.",
     )
     parser.add_argument(
+        "--batch_size",
+        "-b",
+        type=int,
+        default=32,
+        help="[int] Size of minibatches.",
+    )
+    parser.add_argument(
         "--training_dump_path",
         "-i",
         type=str,
@@ -63,7 +70,9 @@ def _validate_model() -> None:
     _ensure_exists(f"{args.training_dump_path}/val/PD")
 
     # Do validation
-    output_data_and_labels = validate(args.model_file, args.training_dump_path)
+    output_data_and_labels = validate(
+        args.model_file, args.training_dump_path, args.batch_size
+    )
 
     # Calcuate summary statitics
     outputs = np.hstack(output_data_and_labels["outputs"])

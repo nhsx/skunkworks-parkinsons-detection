@@ -15,6 +15,9 @@ def _im_to_tensor(filename):
     """
     # Load the file
     im = lycon.load(filename)
+    if im is None:
+        raise IOError(f"Error loading {filename}")
+
     # Make sure we have a three channel image
     assert im.shape[2] == 3
     # permute the channels from (y,x,c) to (c, y, x)
@@ -103,6 +106,9 @@ def label_image_with_confidence(
     flat_results = np.hstack(np.vstack([x.tolist() for x in results]))
 
     image = lycon.load(file_to_stain)
+    if image is None:
+        raise IOError(f"Error loading {file_to_stain}")
+
     # Get the height and width of the slice
     xx, yy, _ = image.shape
     # Tumble over the slice using a fixed window size

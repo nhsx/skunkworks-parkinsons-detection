@@ -43,7 +43,9 @@ The script should be called from the project root directory.
 ```shell
 python polygeist/CLI/train_model.py \
   --training_dump_path Data/real/training_dump \
-  --model_dump_dir Data/real/model_dump
+  --model_dump_dir Data/real/model_dump \
+  --batch_size 32 \
+  --num_epochs 500
 ```
 An example script for partitioning into training and validation subsets is provided in the accompanying notebook. Alternatively, standard Linux commands can be used, e.g.
 ```shell
@@ -67,7 +69,8 @@ The script should be called from the project root directory, e.g.
 python polygeist/CLI/validate_model.py \
   --model_file Data/real/model_dump/PDNET_checkpoint_X_XX_XX_XX \
   --training_dump_path Data/real/training_dump \
-  --roc_file roc_image.png
+  --roc_file roc_image.png \
+  --batch_size 32
 ```
 
 ## Additional

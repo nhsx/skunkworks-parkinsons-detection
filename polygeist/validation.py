@@ -103,7 +103,7 @@ def plot_roc(
     return axes
 
 
-def _create_dataloader(training_dump_path: str):
+def _create_dataloader(training_dump_path: str, batch_size: int):
     """
     Create a torch 'DataLoader' for the validation data.
     @arg training_dump_path: Base folder location of the training data
@@ -119,8 +119,6 @@ def _create_dataloader(training_dump_path: str):
         ]
     )
 
-    batch_size = 32
-
     # Create validation dataset
     image_dataset = datasets.ImageFolder(
         os.path.join(training_dump_path, "val"), downsample
@@ -132,7 +130,7 @@ def _create_dataloader(training_dump_path: str):
     )
 
 
-def _t2n(tensor, apply=None):
+def _t2n(tensor):
     """
     Tensor to Numpy
     When using Torch, converting to Numpy often errors with the need to pass back to CPU
@@ -143,11 +141,12 @@ def _t2n(tensor, apply=None):
     return np.array(tensor.tolist())
 
 
-def validate(model_file: str, training_dump_path: str) -> dict:
+def validate(model_file: str, training_dump_path: str, batch_size: int = 32) -> dict:
     """
     Stand the model up and produce validation metrics.
     @arg model_file: path to weights (checkpoint) to be loaded (str)
     @arg training_dump_path: Base folder location of the training data
+    @arg batch_size: Size of minibatch
     @return: output data and labels (dict)
     """
     # Create our model
@@ -162,7 +161,7 @@ def validate(model_file: str, training_dump_path: str) -> dict:
     model_ft = model_ft.eval()
 
     # Create dataloader for validation data
-    dataloader = _create_dataloader(training_dump_path)
+    dataloader = _create_dataloader(training_dump_path, batch_size)
 
     # Where we will store our outputs and data
     output_data_and_labels = {"outputs": [], "labels": []}

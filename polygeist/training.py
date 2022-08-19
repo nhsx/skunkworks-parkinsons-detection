@@ -22,23 +22,23 @@ from tqdm.notebook import tqdm
 from polygeist.CNN.model import PDNet
 
 
-def train_model(training_dump_path: str, model_dump_dir: str) -> str:
+def train_model(
+    training_dump_path: str,
+    model_dump_dir: str,
+    batch_size: int = 32,
+    num_epochs: int = 500,
+) -> str:
     """
     Train the model using PD and Control training data.
     @arg training_dump_path: Base folder location of the training data
     @arg model_dump_dir: Directory where the model weights (checkpoint) should be saved
+    @arg batch_size: Size of minibatch
+    @arg num_epochs: Number of training epochs
     @return: name of the final checkpoint file
     """
 
     # We will set this within our training loop
     latest_model_name = None
-
-    # Model configuration
-    # Batch size for training (change depending on how much memory you have)
-    batch_size = 32
-
-    # Number of epochs to train for
-    num_epochs = 500
 
     # Size we will need to down-sample to fit the model.
     input_size = 299

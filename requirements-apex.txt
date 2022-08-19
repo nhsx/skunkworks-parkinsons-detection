@@ -1,3 +1,0 @@
-# Apex relies on torch already being installed
-
-git+https://github.com/NVIDIA/apex.git@cd0a1f1#egg=apex

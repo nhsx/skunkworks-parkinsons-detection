@@ -28,7 +28,7 @@ The project team, consisting of neuroscientists and subject matter experts from 
 
 ## Report
 
-A [full report](docs/report.pdf) including background, model selection, performance metrics and known limitations, and detailing the data pipeline/processes employed is included in this repository.
+A full technical report including background, model selection, performance metrics and known limitations, and detailing the data pipeline/processes employed will shortly be published on arxiv.org.
 
 ## Getting Started
 
@@ -79,7 +79,7 @@ The codebase performs three functions (artificial staining, classifier training 
 ## Codebase Structure
 
 - docs: Project report
-- html: Python API documentation (for local viewing)
+- html: [Python API documentation](https://nhsx.github.io/skunkworks-parkinsons-detection/)
 - notebook: End-to-end demonstration of the technique
 - polygeist: Source code
   - CLI: Command line interface
@@ -90,6 +90,8 @@ The codebase performs three functions (artificial staining, classifier training 
 - ext: External dependencies
 
 In addition to an example fake dataset and directory structure (Data/fake), a tar file containing this empty directory structure is included in the 'docs' folder for use with real data. This defined structure is required and expected by the CLI tools, the example code and the notebook.
+
+Python API documentation is built using the `sh make_docs.sh` command, and automatically deploys to https://nhsx.github.io/skunkworks-parkinsons-detection/.
 
 ## NHS AI Lab Skunkworks
 The project is supported by the NHS AI Lab Skunkworks, which exists within the NHS AI Lab at NHSX to support the health and care community to rapidly progress ideas from the conceptual stage to a proof of concept.

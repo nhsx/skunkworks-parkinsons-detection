@@ -73,7 +73,7 @@ CUDA_HOME=/usr/local/cuda-11.3 pip install -v \
   ./
 ```
 The codebase performs three functions (artificial staining, classifier training and inference) these are demonstrated through the following three aspects:
-1. [A Python API](html/index.html) (only local viewing is available, not via GitHub)
+1. [A Python API](https://nhsx.github.io/skunkworks-parkinsons-detection/)
 2. [A Jupyter Notebook](notebook/stain_and_train_for_DMNoV.ipynb) (to be viewed via ```jupyter-lab```), and
 3. [A CLI walkthrough](walkthrough/README.md) (examples to be run from command line)
 

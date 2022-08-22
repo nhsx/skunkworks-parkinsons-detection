@@ -1,7 +1,7 @@
 #!/bin/bash -e
 
 # Integratation test only (N.B. does not produce meaningful classifications)
-# Run from the project root folder, e.g. bash ./walkthrough/integration_test.sh
+# Run from the project root folder, e.g. bash ./tests/integration_test.sh
 
 DATADIR="Data/test"
 rm -rf $DATADIR

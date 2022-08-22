@@ -1,5 +1,5 @@
 [![MIT License](https://img.shields.io/badge/License-MIT-lightgray.svg)](LICENSE)
-![Python Version](https://img.shields.io/badge/Python-3.8.5-blue.svg)
+![Python Version](https://img.shields.io/badge/Python-3.10.4-blue.svg)
 <!-- Add in additional badges as appropriate -->
 
 ![Banner of NHS AI Lab Skunkworks ](docs/banner.png)
@@ -41,9 +41,12 @@ Note, if the submodules do not automaticaly download they should be manually dow
 - ```wget http://colorization.eecs.berkeley.edu/siggraph/models/caffemodel.pth -O ext/ideepcolor/models/pytorch/caffemodel.pth```
 3. Create the virtual environment as below
 
-## Environment Setup
+### Environment Setup
+
 The system has been developed on Ubuntu 20.04.4 with the following prerequisites:
 - build-essential, wget, git, git-lfs, python3-dev, cmake, libpng-dev, libjpeg-dev, and the CUDA toolkit version 11.7 (i.e. cuda_11.7.0_515.43.04_linux.run).
+
+The system has been tested with python 3.10.4.
 
 To create the virtual environment, run:
 ```shell
@@ -75,6 +78,16 @@ The codebase performs three functions (artificial staining, classifier training 
 3. [A CLI walkthrough](walkthrough/README.md) (examples to be run from command line)
 
 *Note:* A GPU is required to run these examples. The work has been developed and tested using an NVIDIA RTX 3090 (24GB).
+
+### Integration test
+
+An end-to-end integration test (GPU required) can be run from the main project directory:
+
+```bash
+./tests/integration_test.sh
+```
+
+See the [integration test documentation](tests/) for more information.
 
 ## Codebase Structure
 

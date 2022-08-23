@@ -10,6 +10,8 @@
 
 "AI Parkinson’s Disease Pathology Scanning PoC" was selected as a project in 2022 following a successful pitch to the AI Skunkworks problem-sourcing programme.
 
+![Image of model segmentation approach](docs/segmentation.png)
+
 ## Intended Use
 
 This proof of concept ([TRL 4](https://en.wikipedia.org/wiki/Technology_readiness_level)) is intended to demonstrate the technical validity of applying Machine Learning techniques to a dataset from Imperial College's Brain Bank in order detect Parkinson’s disease pathology. It is not intended for deployment in a clinical or non-clinical setting without further development and compliance with the [UK Medical Device Regulations 2002](https://www.legislation.gov.uk/uksi/2002/618/contents/made) where the product qualifies as a medical device.

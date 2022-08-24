@@ -4,17 +4,17 @@
 
 ![Banner of NHS AI Lab Skunkworks ](docs/banner.png)
 
-# NHS AI Lab Skunkworks project: AI Parkinson’s Disease Pathology Scanning PoC.
+# NHS AI Lab Skunkworks project: Parkinson's Disease Pathology Prediction
 
-> A pilot project for the NHS AI (Artificial Intelligence) Lab Skunkworks team, "AI Parkinson’s Disease Pathology Scanning PoC" (Automatic segmentation and detection of Parkinson’s disease pathology using synthetic staining and deep neural networks).
+> A pilot project for the NHS AI (Artificial Intelligence) Lab Skunkworks team, "Parkinson's Disease Pathology Prediction" (Automatic segmentation and detection of Parkinson's disease pathology using synthetic staining and deep neural networks).
 
-"AI Parkinson’s Disease Pathology Scanning PoC" was selected as a project in 2022 following a successful pitch to the AI Skunkworks problem-sourcing programme.
+"Parkinson's Disease Pathology Prediction" was selected as a project in 2022 following a successful pitch to the AI Skunkworks problem-sourcing programme.
 
 ![Image of model segmentation approach](docs/segmentation.png)
 
 ## Intended Use
 
-This proof of concept ([TRL 4](https://en.wikipedia.org/wiki/Technology_readiness_level)) is intended to demonstrate the technical validity of applying Machine Learning techniques to a dataset from Imperial College's Brain Bank in order detect Parkinson’s disease pathology. It is not intended for deployment in a clinical or non-clinical setting without further development and compliance with the [UK Medical Device Regulations 2002](https://www.legislation.gov.uk/uksi/2002/618/contents/made) where the product qualifies as a medical device.
+This proof of concept ([TRL 4](https://en.wikipedia.org/wiki/Technology_readiness_level)) is intended to demonstrate the technical validity of applying Machine Learning techniques to a dataset from Imperial College's Brain Bank in order detect Parkinson's disease pathology. It is not intended for deployment in a clinical or non-clinical setting without further development and compliance with the [UK Medical Device Regulations 2002](https://www.legislation.gov.uk/uksi/2002/618/contents/made) where the product qualifies as a medical device.
 
 ## Data Protection
 
@@ -22,11 +22,11 @@ This project was subject to a Data Protection Impact Assessment (DPIA), ensuring
 
 ## Background
 
-The identification of Parkinson’s Disease (PD) from post-mortem brain slices is time consuming for highly trained neuropathologists. Accurate classification and stratification of PD can often take hours per case and is required for the development of research into therapeutics, understanding the progression of PD, and for establishing cause of death.
+The identification of Parkinson's Disease (PD) from post-mortem brain slices is time consuming for highly trained neuropathologists. Accurate classification and stratification of PD can often take hours per case and is required for the development of research into therapeutics, understanding the progression of PD, and for establishing cause of death.
 
-[Parkinson’s UK](https://www.parkinsons.org.uk/) Brain Bank, operating in partnership with [Imperial College London](https://www.imperial.ac.uk/), has produced a dataset containing digitised slices of brains exhibiting various stages of PD pathology; along with control cases, some of which have associated pathology and others which are neurotypical. This dataset is much larger (over 400 cases), more consistent, and of higher quality (all have been stained with the same protocol and imaged within the same laboratory) than has been documented elsewhere in the literature; including those found in a meta-analysis study on detection of neurological disorders containing over 200 papers (Lima et al., 2022).
+[Parkinson's UK](https://www.parkinsons.org.uk/) Brain Bank, operating in partnership with [Imperial College London](https://www.imperial.ac.uk/), has produced a dataset containing digitised slices of brains exhibiting various stages of PD pathology; along with control cases, some of which have associated pathology and others which are neurotypical. This dataset is much larger (over 400 cases), more consistent, and of higher quality (all have been stained with the same protocol and imaged within the same laboratory) than has been documented elsewhere in the literature; including those found in a meta-analysis study on detection of neurological disorders containing over 200 papers (Lima et al., 2022).
 
-The project team, consisting of neuroscientists and subject matter experts from [Imperial](https://www.imperial.ac.uk/), [NHS AI Lab Skunkworks](https://transform.england.nhs.uk/ai-lab/), [Parkinson’s UK](https://www.parkinsons.org.uk/), and [Polygeist](https://polygei.st) have undertaken a 12 week project through the Home Office’s [Accelerated Capability Environment (ACE)](https://www.gov.uk/government/groups/accelerated-capability-environment-ace) to examine the possibility of producing a Proof-of-Concept (PoC) tool to automatically load, enhance and ultimately classify those brain scans. The initial focus of the project was to make a tool that could make a biomarker of PD, the protein 𝛼-synuclein (𝛼-syn), more visible to the pathologist; saving time in searching for the protein manually. This goal was quickly reached, producing a tool that could ‘synthetically stain’ the 𝛼-syn, marking regions of interest in a high-contrast bright green, making them quickly identifiable for the pathologist. Statistical analysis of the synthetically stained images showed that very few regions in the control group were stained compared to the PD group, raising the possibility that an automatic classifier could be developed, which became a stretch goal for the project.
+The project team, consisting of neuroscientists and subject matter experts from [Imperial](https://www.imperial.ac.uk/), [NHS AI Lab Skunkworks](https://transform.england.nhs.uk/ai-lab/), [Parkinson's UK](https://www.parkinsons.org.uk/), and [Polygeist](https://polygei.st) have undertaken a 12 week project through the Home Office's [Accelerated Capability Environment (ACE)](https://www.gov.uk/government/groups/accelerated-capability-environment-ace) to examine the possibility of producing a Proof-of-Concept (PoC) tool to automatically load, enhance and ultimately classify those brain scans. The initial focus of the project was to make a tool that could make a biomarker of PD, the protein 𝛼-synuclein (𝛼-syn), more visible to the pathologist; saving time in searching for the protein manually. This goal was quickly reached, producing a tool that could "synthetically stain" the 𝛼-syn, marking regions of interest in a high-contrast bright green, making them quickly identifiable for the pathologist. Statistical analysis of the synthetically stained images showed that very few regions in the control group were stained compared to the PD group, raising the possibility that an automatic classifier could be developed, which became a stretch goal for the project.
 
 ## Report
 
@@ -124,7 +124,7 @@ HTML and Markdown documentation is [© Crown copyright][copyright] and available
 of the [Open Government 3.0][ogl] licence.
 
 The report is licensed under the [Creative Commons Attribution-NoDerivatives 4.0 International licence (CC BY-ND 4.0)][CC-BY-ND4].
-Images presented here that are derivative works of biological imagery are used with permission, and are copyright © 2022 Parkinson’s UK, and © 2022 Imperial College London, all rights reserved.
+Images presented here that are derivative works of biological imagery are used with permission, and are copyright © 2022 Parkinson's UK, and © 2022 Imperial College London, all rights reserved.
 Extracts from Zhang and colleagues are used under the MIT License and are © 2022 Cornell University.
 The Polygeist logo and title page graphic (which comprises a derivative work used under licence © 2022 Vectorjuice) are © 2022 Polygeist Ltd.
 All foreground intellectual property is transferred by Polygeist to the Crown, and all background intellectual property remains that of the respective owners.

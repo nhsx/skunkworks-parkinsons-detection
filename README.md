@@ -30,7 +30,7 @@ The project team, consisting of neuroscientists and subject matter experts from 
 
 ## Report
 
-A full technical report including background, model selection, performance metrics and known limitations, and detailing the data pipeline/processes employed will shortly be published on arxiv.org.
+A [full technical report](docs/Parkinson's%20Disease%20Pathology%20Prediction%20-%20C319.0%20Report.pdf) including background, model selection, performance metrics and known limitations, and detailing the data pipeline/processes employed will shortly be published on arxiv.org.
 
 ## Getting Started
 

@@ -93,7 +93,7 @@ See the [integration test documentation](tests/) for more information.
 
 ## Codebase Structure
 
-- docs: Project report
+- docs: Project report ([Also available on biorxiv.org](https://www.biorxiv.org/content/10.1101/2022.08.30.505459v1))
 - html: [Python API documentation](https://nhsx.github.io/skunkworks-parkinsons-detection/)
 - notebook: End-to-end demonstration of the technique
 - polygeist: Source code

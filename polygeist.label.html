@@ -1,0 +1,853 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+          "DTD/xhtml1-strict.dtd">
+<html>
+  
+
+  <head>
+    
+    <title>polygeist.label</title>
+    <meta name="generator" content="pydoctor 22.7.0"> 
+        
+    </meta>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1" />
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="apidocs.css" />
+    <link rel="stylesheet" type="text/css" href="extra.css" />
+</head>
+
+  <body>
+
+    
+
+    <nav class="navbar navbar-default mainnavbar">
+      
+  
+  <div class="container-fluid">
+
+
+    <div class="navbar-header">
+      
+      <div class="navlinks">
+        <span class="navbar-brand">
+          polygeist <a href="index.html">API Documentation</a>
+        </span>
+
+        <a href="moduleIndex.html">
+          Modules
+        </a>
+
+        <a href="classIndex.html">
+          Classes
+        </a>
+
+        <a href="nameIndex.html">
+          Names
+        </a>
+
+        <div id="search-box-container">
+          <div class="input-group">
+            <input id="search-box" type="search" name="search-query" placeholder="Search..." aria-label="Search" minlength="2" class="form-control" autocomplete="off" />
+            
+            <span class="input-group-btn">
+              <a style="display: none;" class="btn btn-default" id="search-clear-button" title="Clear" onclick="clearSearch()"><img src="fonts/x-circle.svg" alt="Clear" /></a>
+              <a class="btn btn-default" id="search-help-button" title="Help" onclick="toggleSearchHelpText()"><img src="fonts/info.svg" alt="Help" /></a>
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+      <div id="search-results-container" style="display: none;">
+        
+        <div id="search-buttons">
+          <span class="label label-default" id="search-docstrings-button">
+          <label class="checkbox-inline">
+            <input type="checkbox" id="toggle-search-in-docstrings-checkbox" value="false" onclick="toggleSearchInDocstrings()">
+              search in docstrings
+            </input>
+          </label>
+          </span>
+          
+        </div>
+        
+        <noscript>
+            <h1>Cannot search: JavaScript is not supported/enabled in your browser.</h1>
+        </noscript>
+
+        <div class="hint" id="search-help-box">
+          <p class="rst-last">
+      
+            Search bar offers the following options:
+            <ul>   
+                <li>
+                  <strong>Term presence.</strong> The below example searches for documents that 
+                    must contain “foo”, might contain “bar” and must not contain “baz”: <code>+foo bar -baz</code>
+                </li> 
+
+                <li>
+                  <strong>Wildcards.</strong> The below example searches for documents with words beginning with “foo”: <code>foo*</code>
+                </li> 
+
+                <li>
+                  <strong>Search in specific fields.</strong> The following search matches all objects 
+                  in "twisted.mail" that matches “search”: <code>+qname:twisted.mail.* +search</code>
+
+                  <p>
+                    Possible fields: 'name', 'qname' (fully qualified name), 'docstring', and 'kind'.
+                    Last two fields are only applicable if "search in docstrings" is enabled.
+                  </p>
+                </li>
+
+                <li>
+                  <strong>Fuzzy matches.</strong> The following search matches all documents 
+                  that have a word within 1 edit distance of “foo”: <code>foo~1</code>
+                </li>
+            </ul>
+
+          </p>
+        </div>
+
+        <div id="search-status"> </div>
+
+        <div class="warning" id="search-warn-box" style="display: none;">
+          <p class="rst-last"><span id="search-warn"></span></p>
+        </div>
+
+        <table id="search-results">
+          <!-- Filled dynamically by JS -->
+        </table>
+        
+        <div style="margin-top: 8px;">
+          <p>Results provided by <a href="https://lunrjs.com">Lunr.js</a></p>
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+</nav>
+    
+    <div class="container-fluid">
+
+      <!-- Side navigation -->
+      <div class="sidebarcontainer" style="display: none;">
+        
+        <div class="sidebar"><nav class="sidebar">
+  
+
+  <div>
+
+      <div class="thingTitle">
+        <span>Module</span>
+        <code class="thisobject"><a href="polygeist.label.html" class="internal-link" title="This module">label</a></code> 
+      </div>
+      
+      <div>
+        
+
+        
+         
+
+        
+        
+
+        <div class="childrenKindTitle">Functions</div>
+        <ul>
+    
+    <li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#autogain_background" class="internal-link" title="polygeist.label.autogain_background">autogain<wbr></wbr>_background</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#colourmap_1d" class="internal-link" title="polygeist.label.colourmap_1d">colourmap<wbr></wbr>_1d</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#colourmap_veridis" class="internal-link" title="polygeist.label.colourmap_veridis">colourmap<wbr></wbr>_veridis</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#create_colourised_density_map" class="internal-link" title="polygeist.label.create_colourised_density_map">create<wbr></wbr>_colourised<wbr></wbr>_density<wbr></wbr>_map</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#generate_densities_and_map_coordinates" class="internal-link" title="polygeist.label.generate_densities_and_map_coordinates">generate<wbr></wbr>_densities<wbr></wbr>_and<wbr></wbr>_map<wbr></wbr>_coordinates</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#hitbox" class="internal-link" title="polygeist.label.hitbox">hitbox</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#hitbox_rgb_image" class="internal-link" title="polygeist.label.hitbox_rgb_image">hitbox<wbr></wbr>_rgb<wbr></wbr>_image</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#normalise" class="internal-link" title="polygeist.label.normalise">normalise</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#process_file" class="internal-link" title="polygeist.label.process_file">process<wbr></wbr>_file</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#process_files_and_folders" class="internal-link" title="polygeist.label.process_files_and_folders">process<wbr></wbr>_files<wbr></wbr>_and<wbr></wbr>_folders</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#return_spectral_image" class="internal-link" title="polygeist.label.return_spectral_image">return<wbr></wbr>_spectral<wbr></wbr>_image</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#spatial_map_3b3" class="internal-link" title="polygeist.label.spatial_map_3b3">spatial<wbr></wbr>_map<wbr></wbr>_3b3</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#write_region_image" class="internal-link" title="polygeist.label.write_region_image">write<wbr></wbr>_region<wbr></wbr>_image</a></code>
+            </div>
+        
+
+    </li>
+</ul> 
+
+        
+         
+
+        
+         
+
+        
+         
+        
+      </div>
+  </div><div>
+
+      <div class="thingTitle">
+        <span>Package</span>
+        <code><a href="index.html" class="internal-link" title="The parent of this module">polygeist</a></code> 
+      </div>
+      
+      <div>
+        
+
+        <div class="childrenKindTitle">Modules</div>
+        <ul>
+    
+    <li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="polygeist.CNN.html" class="internal-link" title="polygeist.CNN">CNN</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="polygeist.colour.html" class="internal-link" title="polygeist.colour">colour</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="polygeist.data_faker.html" class="internal-link" title="polygeist.data_faker">data<wbr></wbr>_faker</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="polygeist.slidecore.html" class="internal-link" title="polygeist.slidecore">slidecore</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="polygeist.virtualscope.html" class="internal-link" title="polygeist.virtualscope">virtualscope</a></code>
+            </div>
+        
+
+    </li><li class=" thisobject">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="polygeist.label.html" class="internal-link" title="polygeist.label">label</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="polygeist.microscope.html" class="internal-link" title="polygeist.microscope">microscope</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="polygeist.preprocess.html" class="internal-link" title="polygeist.preprocess">preprocess</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="polygeist.training.html" class="internal-link" title="polygeist.training">training</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="polygeist.utils.html" class="internal-link" title="polygeist.utils">utils</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="polygeist.validation.html" class="internal-link" title="polygeist.validation">validation</a></code>
+            </div>
+        
+
+    </li>
+</ul> 
+
+        
+        
+
+        
+         
+
+        
+         
+
+        
+         
+
+        
+         
+        
+      </div>
+  </div>
+
+</nav>
+        </div>
+        <div id="collapseSideBar">
+          <a class="btn btn-link" onclick="toggleSideBarCollapse()" title="Toggle Sidebar Collapse">
+          </a>
+        </div> 
+        <script src="sidebartoggle.js" type="text/javascript"></script>
+       
+      </div>
+
+      <div id="main" class="">
+        
+
+        
+
+        <div class="page-header">
+          <h1 class="module"><code><code><a href="index.html" class="internal-link">polygeist</a></code><wbr></wbr>.<code><a href="polygeist.label.html" class="internal-link" title="polygeist.label">label</a></code></code></h1>
+          <div id="showPrivate">
+            <button class="btn btn-link" onclick="togglePrivate()">Toggle Private API</button>
+          </div>
+        </div>
+
+        <div class="categoryHeader">
+          module documentation
+        </div>
+
+        <div class="extrasDocstring">
+          
+          <p></p>
+        </div>
+
+        <div class="moduleDocstring">
+          <div><p class="undocumented">Undocumented</p></div>
+        </div>
+
+        <div id="splitTables">
+          <table class="children sortable" id="id13">
+  
+  
+  <tr class="function">
+    
+    <td>Function</td>
+    <td><code><a href="#autogain_background" class="internal-link" title="polygeist.label.autogain_background">autogain<wbr></wbr>_background</a></code></td>
+    <td>Automatically set pixels around the background mean to maximum white.</td>
+  </tr><tr class="function">
+    
+    <td>Function</td>
+    <td><code><a href="#colourmap_1d" class="internal-link" title="polygeist.label.colourmap_1d">colourmap<wbr></wbr>_1d</a></code></td>
+    <td>Linear map an array of 1d floats between two tristimulus values.</td>
+  </tr><tr class="function">
+    
+    <td>Function</td>
+    <td><code><a href="#colourmap_veridis" class="internal-link" title="polygeist.label.colourmap_veridis">colourmap<wbr></wbr>_veridis</a></code></td>
+    <td>Linear map an array of 1d floats between to the veridis colour map</td>
+  </tr><tr class="function">
+    
+    <td>Function</td>
+    <td><code><a href="#create_colourised_density_map" class="internal-link" title="polygeist.label.create_colourised_density_map">create<wbr></wbr>_colourised<wbr></wbr>_density<wbr></wbr>_map</a></code></td>
+    <td>Create a colourised, spatially filtered density image, with overlayed map</td>
+  </tr><tr class="function">
+    
+    <td>Function</td>
+    <td><code><a href="#generate_densities_and_map_coordinates" class="internal-link" title="polygeist.label.generate_densities_and_map_coordinates">generate<wbr></wbr>_densities<wbr></wbr>_and<wbr></wbr>_map<wbr></wbr>_coordinates</a></code></td>
+    <td>Produces density maps for a given decomposed image, and areas above a signal and classification threshold</td>
+  </tr><tr class="function">
+    
+    <td>Function</td>
+    <td><code><a href="#hitbox" class="internal-link" title="polygeist.label.hitbox">hitbox</a></code></td>
+    <td>Draw a hit-box around the edge of an image or image segment</td>
+  </tr><tr class="function">
+    
+    <td>Function</td>
+    <td><code><a href="#hitbox_rgb_image" class="internal-link" title="polygeist.label.hitbox_rgb_image">hitbox<wbr></wbr>_rgb<wbr></wbr>_image</a></code></td>
+    <td>For a given image and set of coordinates, draw the hitox for those coordinates</td>
+  </tr><tr class="function">
+    
+    <td>Function</td>
+    <td><code><a href="#normalise" class="internal-link" title="polygeist.label.normalise">normalise</a></code></td>
+    <td>Normalise an array, centreing it on 0.5</td>
+  </tr><tr class="function">
+    
+    <td>Function</td>
+    <td><code><a href="#process_file" class="internal-link" title="polygeist.label.process_file">process<wbr></wbr>_file</a></code></td>
+    <td>Process an SVS file, loading, decomposing and producing density maps</td>
+  </tr><tr class="function">
+    
+    <td>Function</td>
+    <td><code><a href="#process_files_and_folders" class="internal-link" title="polygeist.label.process_files_and_folders">process<wbr></wbr>_files<wbr></wbr>_and<wbr></wbr>_folders</a></code></td>
+    <td>Main routine for running this module as a command line function. This routine produces density maps, segmentation images and structured json output for a folder or single SVS file.</td>
+  </tr><tr class="function">
+    
+    <td>Function</td>
+    <td><code><a href="#return_spectral_image" class="internal-link" title="polygeist.label.return_spectral_image">return<wbr></wbr>_spectral<wbr></wbr>_image</a></code></td>
+    <td>Spectral Estimation Image of Stains from Aperio Microscope</td>
+  </tr><tr class="function">
+    
+    <td>Function</td>
+    <td><code><a href="#spatial_map_3b3" class="internal-link" title="polygeist.label.spatial_map_3b3">spatial<wbr></wbr>_map<wbr></wbr>_3b3</a></code></td>
+    <td>Apply a spatial convolutional kernel to im</td>
+  </tr><tr class="function">
+    
+    <td>Function</td>
+    <td><code><a href="#write_region_image" class="internal-link" title="polygeist.label.write_region_image">write<wbr></wbr>_region<wbr></wbr>_image</a></code></td>
+    <td>Dump ROIs to disk</td>
+  </tr>
+</table>
+          
+
+            
+        </div>
+
+        <div id="childList">
+          <div class="basefunction">
+  
+  
+  <a name="polygeist.label.autogain_background">
+    
+  </a>
+  <a name="autogain_background">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">autogain_background</span>(image, xin=(<wbr></wbr>200, <wbr></wbr>-100), yin=(<wbr></wbr>100, <wbr></wbr>200), threshold=0.95, channel=0, value=255):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Automatically set pixels around the background mean to maximum white.</p>
+<table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">image</span></td><td class="fieldArgDesc">NxMx3 loaded image (3d np.array)</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">xin</span></td><td class="fieldArgDesc">the x coordinates to estimate the background</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">yin</span></td><td class="fieldArgDesc">the y coordinates to estimate the background</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">threshold</span></td><td class="fieldArgDesc">the lower bound around the mean for which pixels will be treated as background (default .95/95%)</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">channel</span></td><td class="fieldArgDesc">the channel to test, by default 0 (RED) as this is not a signal channel</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">value</span></td><td class="fieldArgDesc">the value to set the R, G and B components to, by default max white (255, 255, 255)</td></tr><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td colspan="2">NxM image with gain adjustment.</td></tr></table></div>
+  </div>
+</div><div class="basefunction">
+  
+  
+  <a name="polygeist.label.colourmap_1d">
+    
+  </a>
+  <a name="colourmap_1d">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">colourmap_1d</span>(colour1, colour2, one_d_floats):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Linear map an array of 1d floats between two tristimulus values.</p>
+<table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">colour1</span></td><td class="fieldArgDesc">1x3 RGB Value (np.array)</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">colour2</span></td><td class="fieldArgDesc">1x3 RGB Value (np.array)</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">one<wbr></wbr>_d<wbr></wbr>_floats</span></td><td class="fieldArgDesc">array of floats between 0 and 1 (np.array)</td></tr><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td colspan="2">transformed values (NX3 =&gt; colour1 &lt; Im &lt; colour2)</td></tr></table></div>
+  </div>
+</div><div class="basefunction">
+  
+  
+  <a name="polygeist.label.colourmap_veridis">
+    
+  </a>
+  <a name="colourmap_veridis">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">colourmap_veridis</span>(one_d_floats):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Linear map an array of 1d floats between to the veridis colour map</p>
+<table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">one<wbr></wbr>_d<wbr></wbr>_floats</span></td><td class="fieldArgDesc">array of floats between 0 and 1 (np.array)</td></tr><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td colspan="2">transformed values (NX3 =&gt; veridis(0) &lt; Im &lt; veridis(1))</td></tr></table></div>
+  </div>
+</div><div class="basefunction">
+  
+  
+  <a name="polygeist.label.create_colourised_density_map">
+    
+  </a>
+  <a name="create_colourised_density_map">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">create_colourised_density_map</span>(raw, raw_threshold, densities, stride, class_threshold, identify_rois=False):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Create a colourised, spatially filtered density image, with overlayed map</p>
+<table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">raw</span></td><td class="fieldArgDesc">raw decomposed image</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">raw<wbr></wbr>_threshold</span></td><td class="fieldArgDesc">density map threshold</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">densities</span></td><td class="fieldArgDesc">densities array produced by generate_densities_and_map_coordinates</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">stride</span></td><td class="fieldArgDesc">stride over which to tumble</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">class<wbr></wbr>_threshold</span></td><td class="fieldArgDesc">classification threshold for ROIs</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">identify<wbr></wbr>_rois</span></td><td class="fieldArgDesc">Overlay ROI's of significant density</td></tr><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td colspan="2">reduced_brightness_density_map, density_mapp_array</td></tr></table></div>
+  </div>
+</div><div class="basefunction">
+  
+  
+  <a name="polygeist.label.generate_densities_and_map_coordinates">
+    
+  </a>
+  <a name="generate_densities_and_map_coordinates">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">generate_densities_and_map_coordinates</span>(raw_image, stride, raw_threshold, class_threshold):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Produces density maps for a given decomposed image, and areas above a signal and classification threshold</p>
+<div class="rst-section" id="rst-definitions">
+<h2 class="heading">Definitions</h2>
+<p>Definitions of terms used in procedure below:</p>
+<pre class="rst-literal-block">
+    I : [DAB Image],  i : [rows of image], j: [columns of image]
+    D : [Density Map], s: [Stride], si: [i / stride], sj: [j / stride]
+    B : [Binary map], T : [Signal Threshold], C: [Classification Threshold]
+    mu : [Array mean], R : [ROI Array], O: [Coordinates array], Om: [Map Coordinates Array]
+</pre>
+</div>
+<div class="rst-section" id="rst-procedure">
+<h2 class="heading">Procedure</h2>
+<p>Pseudocode for procedure generating density maps:</p>
+<pre class="rst-literal-block">
+    B(i,j) = I(i,j) &lt; T
+    D(si, sj) = mu(I(i:i+s, j:j+s))
+    R(si, sj) = D &gt; C
+    Om = (si, sj) for si and sj if R(si, sj)
+    O = (i, j) for i and j if R(i / stride, j / stride)
+</pre>
+</div>
+<table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">raw<wbr></wbr>_image</span></td><td class="fieldArgDesc">NxMxF spectral image, where F is the number of channels (Fd np.array)</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">stride</span></td><td class="fieldArgDesc">The window size over which we will tumble</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">raw<wbr></wbr>_threshold</span></td><td class="fieldArgDesc">The value per pixel to be considered a 'vote' for that pixel containing significant signal</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">class<wbr></wbr>_threshold</span></td><td class="fieldArgDesc">The mean density required for that region to be considered an ROI</td></tr><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td colspan="2">NxM densities array, coordinates in the image of ROIs, coordinates in the map of ROIs (np.arrays)</td></tr></table></div>
+  </div>
+</div><div class="basefunction">
+  
+  
+  <a name="polygeist.label.hitbox">
+    
+  </a>
+  <a name="hitbox">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">hitbox</span>(im_to_hit):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Draw a hit-box around the edge of an image or image segment</p>
+<table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">im<wbr></wbr>_to<wbr></wbr>_hit</span></td><td class="fieldArgDesc">array or array slice (3d np.array)</td></tr><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td colspan="2">None, inplace</td></tr></table></div>
+  </div>
+</div><div class="basefunction">
+  
+  
+  <a name="polygeist.label.hitbox_rgb_image">
+    
+  </a>
+  <a name="hitbox_rgb_image">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">hitbox_rgb_image</span>(image, coordinates, stride):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>For a given image and set of coordinates, draw the hitox for those coordinates</p>
+<table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">image</span></td><td class="fieldArgDesc">array or array slice (3d np.array)</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">coordinates</span></td><td class="fieldArgDesc">coordinates array referencing y, x location in image</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">stride</span></td><td class="fieldArgDesc">size of hitbox in px</td></tr><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td colspan="2">image (although it is applied in place)</td></tr></table></div>
+  </div>
+</div><div class="basefunction">
+  
+  
+  <a name="polygeist.label.normalise">
+    
+  </a>
+  <a name="normalise">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">normalise</span>(a):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Normalise an array, centreing it on 0.5</p>
+<table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">a</span></td><td class="fieldArgDesc">Array in (np.array NxM)</td></tr><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td colspan="2">transformed values (NxM =&gt; 0 &lt; F &lt; 1)</td></tr></table></div>
+  </div>
+</div><div class="basefunction">
+  
+  
+  <a name="polygeist.label.process_file">
+    
+  </a>
+  <a name="process_file">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">process_file</span>(file, stride, raw_threshold, class_threshold, apply_automatic_background_removal, microns=2.0, verbose=False):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Process an SVS file, loading, decomposing and producing density maps</p>
+<table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">file</span></td><td class="fieldArgDesc">fullpath to SVS file</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">stride</span></td><td class="fieldArgDesc">The window size over which we will tumble</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">raw<wbr></wbr>_threshold</span></td><td class="fieldArgDesc">The value per pixel to be considered a 'vote' for that pixel containing significant signal</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">class<wbr></wbr>_threshold</span></td><td class="fieldArgDesc">The mean density required for that region to be considered an ROI</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">apply<wbr></wbr>_automatic<wbr></wbr>_background<wbr></wbr>_removal</span></td><td class="fieldArgDesc">attempt to remove the slide background</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">microns</span></td><td class="fieldArgDesc">Slide resolution in um per pixel, default 2.0um</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">verbose</span></td><td class="fieldArgDesc">provide printed output</td></tr><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td colspan="2">image, raw_image (decomposed), densities, coordinates, map_coordinates</td></tr></table></div>
+  </div>
+</div><div class="basefunction">
+  
+  
+  <a name="polygeist.label.process_files_and_folders">
+    
+  </a>
+  <a name="process_files_and_folders">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">process_files_and_folders</span>(input_file_or_folder, output_folder, stride=512, raw_threshold=-0.1, class_threshold=0.1, output_density=False, output_json=False, skip_jpeg=False, auto_remove_background=True, include_only_index=None, output_segmentation=False, verbose=True, synthetic=False):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Main routine for running this module as a command line function. This routine produces density maps, segmentation images and structured json output for a folder or single SVS file.</p>
+<table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">input<wbr></wbr>_file<wbr></wbr>_or<wbr></wbr>_folder</span></td><td class="fieldArgDesc">Full path to SVS file, or folder filled with SVS files</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">output<wbr></wbr>_folder</span></td><td class="fieldArgDesc">Full path of the folder to output results {json, jpegs}</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">stride</span></td><td class="fieldArgDesc">Stride over which to tumble</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">raw<wbr></wbr>_threshold</span></td><td class="fieldArgDesc">Density difference under which we will consider the signal a valid signal</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">class<wbr></wbr>_threshold</span></td><td class="fieldArgDesc">Mean density identification threshold required to specify an ROI</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">output<wbr></wbr>_density</span></td><td class="fieldArgDesc">Should density images be saved to disk {jpegs}</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">output<wbr></wbr>_json</span></td><td class="fieldArgDesc">Should json metadata/density maps be saved to disk {json}</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">skip<wbr></wbr>_jpeg</span></td><td class="fieldArgDesc">Skip saving the ROI hit-boxed images to disk</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">auto<wbr></wbr>_remove<wbr></wbr>_background</span></td><td class="fieldArgDesc">Should we apply automatic background identification and removal</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">include<wbr></wbr>_only<wbr></wbr>_index</span></td><td class="fieldArgDesc">Filter filenames for string, (e.g. "17_A") when not None</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">output<wbr></wbr>_segmentation</span></td><td class="fieldArgDesc">Output each ROI as an image {jpegs}</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">verbose</span></td><td class="fieldArgDesc">printf feedback</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">synthetic</span></td><td class="fieldArgDesc">Should we look for JPG files</td></tr><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td colspan="2">None</td></tr></table></div>
+  </div>
+</div><div class="basefunction">
+  
+  
+  <a name="polygeist.label.return_spectral_image">
+    
+  </a>
+  <a name="return_spectral_image">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">return_spectral_image</span>(image):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Spectral Estimation Image of Stains from Aperio Microscope</p>
+<table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">image</span></td><td class="fieldArgDesc">NxMx3 loaded image (3d np.array)</td></tr><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td colspan="2">NxM DAB response image</td></tr></table></div>
+  </div>
+</div><div class="basefunction">
+  
+  
+  <a name="polygeist.label.spatial_map_3b3">
+    
+  </a>
+  <a name="spatial_map_3b3">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">spatial_map_3b3</span>(im):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Apply a spatial convolutional kernel to im</p>
+<table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">im</span></td><td class="fieldArgDesc">NxM image (2d or 3d np.array)</td></tr><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td colspan="2">filter image by convolutional kernel</td></tr></table></div>
+  </div>
+</div><div class="basefunction">
+  
+  
+  <a name="polygeist.label.write_region_image">
+    
+  </a>
+  <a name="write_region_image">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">write_region_image</span>(parent_path, filename_prefix, coordinates, image, stride):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Dump ROIs to disk</p>
+<table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">parent<wbr></wbr>_path</span></td><td class="fieldArgDesc">root folder of images</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">filename<wbr></wbr>_prefix</span></td><td class="fieldArgDesc">name of the collection of images (e.g. slide name)</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">coordinates</span></td><td class="fieldArgDesc">coordinates of the start x,y of the regions</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">image</span></td><td class="fieldArgDesc">image to traverse</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">stride</span></td><td class="fieldArgDesc">stride over which to tumble</td></tr><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td colspan="2">None</td></tr></table></div>
+  </div>
+</div>
+        </div>
+      
+      </div>
+    </div>
+
+    <footer class="navbar navbar-default">
+
+  
+  <div class="container">
+    <a href="index.html">API Documentation</a> for polygeist,
+  generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a>
+    22.7.0 at 2023-03-29 10:18:07.
+  </div>
+
+  <!-- Search related scripts needs to be loaded at the end of HTML 
+    parsing not to introduce overhead and display HTML data asap -->
+  <script src="ajax.js" type="text/javascript"></script>
+  <script src="searchlib.js" type="text/javascript"></script>
+  <script src="search.js" type="text/javascript"></script>
+
+</footer>
+  
+    <script src="pydoctor.js" type="text/javascript"></script>
+
+  </body>
+</html>

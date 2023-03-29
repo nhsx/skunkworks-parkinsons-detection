@@ -2,12 +2,13 @@
 Preprocessing script to synthetically stain and segment a slide.
 """
 import os
+import imageio as io
 
 # Import Slide interface wrapper
 from polygeist.slidecore import AperioSlide, SyntheticSlide
 
 # Import Staining libraries
-from ext.ideepcolor.data import colorize_image as CI
+from ext.ideepcolor.data.colorize_image import ColorizeImageTorch as ColouriseImageTorch
 import ext.ideepcolor.models.pytorch.model as model
 
 # ML includes
@@ -17,11 +18,8 @@ import torch
 import numpy as np
 from skimage.transform import resize
 
-# Image loading
-import lycon
-
 # Configuration
-state_path = "./ext/ideepcolor/models/pytorch/caffemodel.pth"
+state_path = os.path.join(os.path.dirname(__file__), '..', 'ext/ideepcolor/models/pytorch/caffemodel.pth')
 
 """Location of the synthetic staining model weights"""
 
@@ -48,23 +46,21 @@ def colourise_slide_and_segment(
     @arg dump_path_segmented: directory where filtered images should be saved (str)
     @arg subdirectory: directory append (i.e. class, either PD or Control) (str)
     """
-    # Run model on gpu this is for the colorisation network functions only
+    # Run model on gpu this is for the colourisation network functions only
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-    # Initialize colorization class, torch model
-    colorModel = CI.ColorizeImageTorch(Xd=network_roi_size)
+    # Initialize colourisation class, torch model
+    colour_model = ColouriseImageTorch(Xd=network_roi_size)
 
     # Pretrained model, the library uses the same model (caffe)
     # for its caffe and pytorch implementations
-    colorModel.prep_net(0, state_path, SIGGRAPHGenerator=model.SIGGRAPHGenerator)
+    colour_model.prep_net(0, state_path, SIGGRAPHGenerator=model.SIGGRAPHGenerator)
 
     # We will use our 2um (4um^2) pixels, as we used in the jpeg processing tests
     pixel_width_in_microns = 0.504 * 4
 
     slide = SyntheticSlide(slide_file) if is_synthetic else AperioSlide(slide_file)
-    slide_at_um = slide.get_slide_with_pixel_resolution_in_microns(
-        pixel_width_in_microns
-    )
+    slide_at_um = slide.get_slide_with_pixel_resolution_in_microns(pixel_width_in_microns)
 
     # Set the slide window size to correspond with our network,
     # we will use  a broader window, which we used during some initial testing
@@ -89,7 +85,7 @@ def colourise_slide_and_segment(
         for y in np.arange(0, yy - slide.window_size, slide.window_size):
 
             # Get our ROI for this pass in the network
-            roi = slide_at_um[y : y + slide.window_size, x : x + slide.window_size, :]
+            roi = slide_at_um[y:y + slide.window_size, x:x + slide.window_size, :]
 
             # Here we are producing our 'suggestion' mask for the network,
             # we mask values which are stained brown
@@ -102,14 +98,14 @@ def colourise_slide_and_segment(
 
             # Clean up the mask,
             # format its dimensions to have a batch size of 1 and send it to our torch device
-            cleaned_mask = ~(roi_input == 0)
+            cleaned_mask: np.ndarray = ~(roi_input == 0)
             mask = torch.Tensor(cleaned_mask.astype(float)).unsqueeze(0).to(device)
 
             # These are La*b* coordinates,
             # we use them as a negative is positive (cookie-cut) mask,
             # they will tell our network we want regions similar to those hinted
             # (and their surrounding areas) to be stained with these coordinates.
-            # These coordinates allows post-hoc rotation in La*b* colour space.
+            # These coordinates allow post-hoc rotation in La*b* colour space.
             a = -50
             b = 63
             ab = np.zeros((2, 256, 256))
@@ -120,18 +116,16 @@ def colourise_slide_and_segment(
             input_ab = torch.Tensor(ab.astype(float)).to(device)
 
             # Ok, now we run the network on the image
-            colorModel.set_image(roi)
-            colorModel.net_forward(input_ab, mask)  # run model, returns 256x256 image
+            colour_model.set_image(roi)
+            colour_model.net_forward(input_ab, mask)  # run model, returns 256x256 image
 
             # get mask, input image,
             # and result in full resolution using the network functions
             img_out_fullres = (
-                colorModel.get_img_fullres()
+                colour_model.get_img_fullres()
             )  # get image at full resolution
 
-            output_c[
-                y : y + slide.window_size, x : x + slide.window_size, :
-            ] = img_out_fullres.copy()
+            output_c[y:y + slide.window_size, x:x + slide.window_size, :] = img_out_fullres.copy()
 
             # Calculate the difference in our green channel,
             # and only dump portions of interest
@@ -144,7 +138,7 @@ def colourise_slide_and_segment(
             if np.sum(diff > threshold) / (slide.window_size**2) > pc:
                 # Should we dump the slide?
                 # (see if there are any highlighted bodies in the slide)
-                lycon.save(
+                io.imwrite(
                     f"{dump_path_segmented}/{subdirectory}/{base}_{c}.png",
                     255.0 - img_out_fullres,
                 )
@@ -152,6 +146,6 @@ def colourise_slide_and_segment(
 
     # It is easier to identify the staining when we flip to dark mode.
     # Invert the image.
-    lycon.save(
+    io.imwrite(
         f"{dump_path_full}/{subdirectory}/{base}_synthetic_stain.png", 255.0 - output_c
     )

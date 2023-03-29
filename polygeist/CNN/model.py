@@ -33,7 +33,7 @@ class PDNet(nn.Module):
         """Additional layers: 2x(Dropout and Fully Connected)"""
 
         self.final = nn.Sequential((nn.Sigmoid()))
-        """Final layer: Sequential(Sigmod)"""
+        """Final layer: Sequential(Sigmoid)"""
 
     def forward(self, x):
         """Forward inference"""

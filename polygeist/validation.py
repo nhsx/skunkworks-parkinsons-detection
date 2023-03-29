@@ -6,10 +6,12 @@ Subfolders are required to follow the convention:
 """
 import os
 import torch
+from torch.utils.data import DataLoader
 from torchvision import datasets, transforms
 import numpy as np
 from tqdm.notebook import tqdm
 from polygeist.CNN.model import PDNet
+from polygeist.utils import evaluate_threshold_sweep
 
 
 def plot_roc(
@@ -49,45 +51,21 @@ def plot_roc(
         "F": [],
     }
     # Plot a ROC for <steps> possible thresholds from 0 .. max score
-    if max_value is None:
-        max_value = max(matched.max(), non_matched.max())
-    for i in range(0, steps):
-        test_threshold = (i / steps) * max_value
-        hits = np.count_nonzero(matched > test_threshold) / matched.size
-        tn = np.count_nonzero(non_matched < test_threshold) / non_matched.size
-        false_alarms = np.count_nonzero(non_matched > test_threshold) / non_matched.size
-        A = (hits + (1.0 - false_alarms)) / 2
-        if hits > 0 and false_alarms > 0:
-            P = hits / (hits + false_alarms)
-            S = tn / (tn + false_alarms)
-        else:
-            P = -1
-            S = -1
-        if P > 0 and hits > 0:
-            F1 = (2 * P * hits) / (P + hits)
-        else:
-            F1 = -1
-        if verbose:
-            print(
-                f"Step:{i}: Thresh {test_threshold} gives {hits} hits and"
-                f" {false_alarms} FAs, S={S}, P={P}, F1={F1}, A={A}"
-            )
+
+    for hits, false_alarms, a, p, s, f1 in evaluate_threshold_sweep(steps, matched, non_matched, verbose, max_value):
         h.append(hits)
         fa.append(false_alarms)
-
         # Stats
-        stats["A"].append(A)
-        stats["P"].append(P)
-        stats["S"].append(S)
-        stats["F1"].append(F1)
+        stats["A"].append(a)
+        stats["P"].append(p)
+        stats["S"].append(s)
+        stats["F1"].append(f1)
 
     # Stats
     stats["H"].append(h)
     stats["F"].append(fa)
-
     for k, v in stats.items():
         stats[k] = np.array(v).flatten()
-
     # Numpy
     h = np.array(h)
     fa = np.array(fa)
@@ -125,7 +103,7 @@ def _create_dataloader(training_dump_path: str, batch_size: int):
     )
 
     # Create validation dataloader
-    return torch.utils.data.DataLoader(
+    return DataLoader(
         image_dataset, batch_size=batch_size, shuffle=True, num_workers=4
     )
 

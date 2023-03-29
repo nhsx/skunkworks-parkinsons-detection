@@ -2,7 +2,7 @@
 // It's included in every HTML file.
 // Depends on library files searchlib.js and ajax.js (and of course lunr.js)
 
-// Ideas for improvments:
+// Ideas for improvments: 
 // - Include filtering buttons:
 //    - search only in the current module
 //    - have a query frontend that helps build complex queries
@@ -17,8 +17,8 @@
 
 let input = document.getElementById('search-box');
 let results_container = document.getElementById('search-results-container');
-let results_list = document.getElementById('search-results');
-let searchInDocstringsButton = document.getElementById('search-docstrings-button');
+let results_list = document.getElementById('search-results'); 
+let searchInDocstringsButton = document.getElementById('search-docstrings-button'); 
 let searchInDocstringsCheckbox = document.getElementById('toggle-search-in-docstrings-checkbox');
 var isSearchReadyPromise = null;
 
@@ -156,7 +156,7 @@ function _stopSearchingProcess(){
  * We do not show the (X) button when there is no search going on.
  */
  function updateClearSearchBtn(){
-
+  
   if (input.value.length>0){
     document.getElementById('search-clear-button').style.display = 'inline-block';
   }
@@ -191,7 +191,7 @@ function _getSearchDelayPromise(indexURL){ // -> Promise of a Search delay numbe
     }
     if (size>SEARCH_INDEX_SIZE_TRESH_INCREASE_DELAY){
       // For better UX
-      searchDelay = SEARCH_INCREASED_DELAY; // in miliseconds, this avoids searching several times when typing several leters very rapidly
+      searchDelay = SEARCH_INCREASED_DELAY; // in miliseconds, this avoids searching several times when typing several leters very rapidly 
     }
     return searchDelay;
   });
@@ -216,7 +216,7 @@ function searchAsYouType(){
     if (indexSizeApprox > SEARCH_INDEX_SIZE_TRESH_DISABLE_SEARCH_AS_YOU_TYPE){
       // Not searching as we type if "default" index size if greater than 20MB.
       if (input.value.length===0){ // No actual query, this only resets some UI components.
-        launchSearch();
+        launchSearch(); 
       }
       else{
         setTimeout(() => {
@@ -238,7 +238,7 @@ searchEventsEnv.addEventListener("searchStarted", (ev) => {
 
 var _lastSearchStartTime = null;
 var _lastSearchInput = null;
-/**
+/** 
  * Do the actual searching business
  * Main entrypoint to [re]launch the search.
  * Called everytime the search bar is edited.
@@ -246,7 +246,7 @@ var _lastSearchInput = null;
 function launchSearch(noDelay){
   let _searchStartTime = performance.now();
 
-  // Get the query terms
+  // Get the query terms 
   let _query = input.value;
 
   // In chrome, two events are triggered simultaneously for the input event.
@@ -272,7 +272,7 @@ function launchSearch(noDelay){
     setStatus("Cannot search: JavaScript Worker API is not supported in your browser. ");
     return;
   }
-
+  
   setWarning('');
   resetResultList();
   showResultContainer();
@@ -280,25 +280,25 @@ function launchSearch(noDelay){
 
   // Determine indexURL
   let indexURL = _isSearchInDocstringsEnabled() ? "fullsearchindex.json" : "searchindex.json";
-
-  // If search in docstring is enabled:
+  
+  // If search in docstring is enabled: 
   //  -> customize query function to include docstring for clauses applicable for all fields
   let _fields = _isSearchInDocstringsEnabled() ? ["name", "names", "qname", "docstring"] : ["name", "names", "qname"];
 
   resetLongSearchTimerInfo();
   launchLongSearchTimerInfo();
-
-  // Get search delay, wait the all search resources to be cached and actually launch the search
+  
+  // Get search delay, wait the all search resources to be cached and actually launch the search 
   return _getSearchDelayPromise(indexURL).then((searchDelay) => {
   if (isSearchReadyPromise==null){
     isSearchReadyPromise = _getIsSearchReadyPromise()
   }
-  return isSearchReadyPromise.then((r)=>{
-  return lunrSearch(_query, indexURL, _fields, "lunr.js", !noDelay?searchDelay:0).then((lunrResults) => {
+  return isSearchReadyPromise.then((r)=>{ 
+  return lunrSearch(_query, indexURL, _fields, "lunr.js", !noDelay?searchDelay:0).then((lunrResults) => { 
 
       // outdated query results
       if (_searchStartTime != _lastSearchStartTime){return;}
-
+      
       if (!lunrResults){
         setErrorStatus();
         throw new Error("No data to show");
@@ -321,9 +321,9 @@ function launchSearch(noDelay){
         // Edit DOM
         resetLongSearchTimerInfo();
         displaySearchResults(_query, documentResults, lunrResults)
-
+        
         // Log stats
-        console.log('Search for "' + _query + '" took ' +
+        console.log('Search for "' + _query + '" took ' + 
           ((performance.now() - _searchStartTime)/1000).toString() + ' seconds.')
 
         // End
@@ -347,7 +347,7 @@ function _handleErr(err){
 }
 
 /**
- * Given the query string, documentResults and lunrResults as used in search(),
+ * Given the query string, documentResults and lunrResults as used in search(), 
  * edit the DOM to add them in the search results list.
  */
 function displaySearchResults(_query, documentResults, lunrResults){
@@ -431,7 +431,7 @@ document.onkeyup = function(evt) {
   }
 };
 
-// Init search and help text.
+// Init search and help text. 
 // search box is not visible by default because
 // we don't want to show it if the browser do not support JS.
 window.addEventListener('load', (event) => {
@@ -443,7 +443,7 @@ window.addEventListener('load', (event) => {
 // Hide the dropdown if the user clicks outside of it
 window.addEventListener("click", function(event) {
   if (event){
-      if (!event.target.closest('#search-results-container')
+      if (!event.target.closest('#search-results-container') 
           && !event.target.closest('#search-box')
           && !event.target.closest('#search-help-button')){
             hideResultContainer();

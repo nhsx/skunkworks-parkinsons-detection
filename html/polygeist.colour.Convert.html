@@ -1,0 +1,614 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+          "DTD/xhtml1-strict.dtd">
+<html>
+  
+
+  <head>
+    
+    <title>polygeist.colour.Convert</title>
+    <meta name="generator" content="pydoctor 22.7.0"> 
+        
+    </meta>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1" />
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="apidocs.css" />
+    <link rel="stylesheet" type="text/css" href="extra.css" />
+</head>
+
+  <body>
+
+    
+
+    <nav class="navbar navbar-default mainnavbar">
+      
+  
+  <div class="container-fluid">
+
+
+    <div class="navbar-header">
+      
+      <div class="navlinks">
+        <span class="navbar-brand">
+          polygeist <a href="index.html">API Documentation</a>
+        </span>
+
+        <a href="moduleIndex.html">
+          Modules
+        </a>
+
+        <a href="classIndex.html">
+          Classes
+        </a>
+
+        <a href="nameIndex.html">
+          Names
+        </a>
+
+        <div id="search-box-container">
+          <div class="input-group">
+            <input id="search-box" type="search" name="search-query" placeholder="Search..." aria-label="Search" minlength="2" class="form-control" autocomplete="off" />
+            
+            <span class="input-group-btn">
+              <a style="display: none;" class="btn btn-default" id="search-clear-button" title="Clear" onclick="clearSearch()"><img src="fonts/x-circle.svg" alt="Clear" /></a>
+              <a class="btn btn-default" id="search-help-button" title="Help" onclick="toggleSearchHelpText()"><img src="fonts/info.svg" alt="Help" /></a>
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+      <div id="search-results-container" style="display: none;">
+        
+        <div id="search-buttons">
+          <span class="label label-default" id="search-docstrings-button">
+          <label class="checkbox-inline">
+            <input type="checkbox" id="toggle-search-in-docstrings-checkbox" value="false" onclick="toggleSearchInDocstrings()">
+              search in docstrings
+            </input>
+          </label>
+          </span>
+          
+        </div>
+        
+        <noscript>
+            <h1>Cannot search: JavaScript is not supported/enabled in your browser.</h1>
+        </noscript>
+
+        <div class="hint" id="search-help-box">
+          <p class="rst-last">
+      
+            Search bar offers the following options:
+            <ul>   
+                <li>
+                  <strong>Term presence.</strong> The below example searches for documents that 
+                    must contain “foo”, might contain “bar” and must not contain “baz”: <code>+foo bar -baz</code>
+                </li> 
+
+                <li>
+                  <strong>Wildcards.</strong> The below example searches for documents with words beginning with “foo”: <code>foo*</code>
+                </li> 
+
+                <li>
+                  <strong>Search in specific fields.</strong> The following search matches all objects 
+                  in "twisted.mail" that matches “search”: <code>+qname:twisted.mail.* +search</code>
+
+                  <p>
+                    Possible fields: 'name', 'qname' (fully qualified name), 'docstring', and 'kind'.
+                    Last two fields are only applicable if "search in docstrings" is enabled.
+                  </p>
+                </li>
+
+                <li>
+                  <strong>Fuzzy matches.</strong> The following search matches all documents 
+                  that have a word within 1 edit distance of “foo”: <code>foo~1</code>
+                </li>
+            </ul>
+
+          </p>
+        </div>
+
+        <div id="search-status"> </div>
+
+        <div class="warning" id="search-warn-box" style="display: none;">
+          <p class="rst-last"><span id="search-warn"></span></p>
+        </div>
+
+        <table id="search-results">
+          <!-- Filled dynamically by JS -->
+        </table>
+        
+        <div style="margin-top: 8px;">
+          <p>Results provided by <a href="https://lunrjs.com">Lunr.js</a></p>
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+</nav>
+    
+    <div class="container-fluid">
+
+      <!-- Side navigation -->
+      <div class="sidebarcontainer" style="display: none;">
+        
+        <div class="sidebar"><nav class="sidebar">
+  
+
+  <div>
+
+      <div class="thingTitle">
+        <span>Class</span>
+        <code class="thisobject"><a href="polygeist.colour.Convert.html" class="internal-link" title="This class"><wbr></wbr>Convert</a></code> 
+      </div>
+      
+      <div>
+        
+
+        
+         
+
+        
+        
+
+        <div class="childrenKindTitle">Methods</div>
+        <ul>
+    
+    <li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#apply" class="internal-link" title="polygeist.colour.Convert.apply">apply</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#build_transform" class="internal-link" title="polygeist.colour.Convert.build_transform">build<wbr></wbr>_transform</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#sRGB_to_XYZ" class="internal-link" title="polygeist.colour.Convert.sRGB_to_XYZ">s<wbr></wbr>RGB_to_<wbr></wbr>XYZ</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#XYZ_to_Linear" class="internal-link" title="polygeist.colour.Convert.XYZ_to_Linear"><wbr></wbr>XYZ_to_<wbr></wbr>Linear</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#XYZ_to_sRGB" class="internal-link" title="polygeist.colour.Convert.XYZ_to_sRGB"><wbr></wbr>XYZ_to_s<wbr></wbr>RGB</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#XYZ_to_Yxy" class="internal-link" title="polygeist.colour.Convert.XYZ_to_Yxy"><wbr></wbr>XYZ_to_<wbr></wbr>Yxy</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#Yxy_to_XYZ" class="internal-link" title="polygeist.colour.Convert.Yxy_to_XYZ"><wbr></wbr>Yxy_to_<wbr></wbr>XYZ</a></code>
+            </div>
+        
+
+    </li>
+</ul> 
+
+        
+         
+
+        
+         
+
+        
+         
+        
+      </div>
+  </div><div>
+
+      <div class="thingTitle">
+        <span>Package</span>
+        <code><a href="polygeist.colour.html" class="internal-link" title="The parent of this class">colour</a></code> 
+      </div>
+      
+      <div>
+        
+
+        
+         
+
+        <div class="childrenKindTitle">Classes</div>
+        <ul>
+    
+    <li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="polygeist.colour.CMFs.html" class="internal-link" title="polygeist.colour.CMFs"><wbr></wbr>CMFs</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="polygeist.colour.ColourTests.html" class="internal-link" title="polygeist.colour.ColourTests"><wbr></wbr>Colour<wbr></wbr>Tests</a></code>
+            </div>
+        
+
+    </li><li class=" thisobject">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="polygeist.colour.Convert.html" class="internal-link" title="polygeist.colour.Convert"><wbr></wbr>Convert</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="polygeist.colour.Illuminant.html" class="internal-link" title="polygeist.colour.Illuminant"><wbr></wbr>Illuminant</a></code>
+            </div>
+        
+
+    </li>
+</ul>
+
+        <div class="childrenKindTitle">Functions</div>
+        <ul>
+    
+    <li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="polygeist.colour.html#integrate" class="internal-link" title="polygeist.colour.integrate">integrate</a></code>
+            </div>
+        
+
+    </li>
+</ul> 
+
+        
+         
+
+        <div class="childrenKindTitle">Variables</div>
+        <ul>
+    
+    <li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="polygeist.colour.html#path_to_library_dir" class="internal-link" title="polygeist.colour.path_to_library_dir">path<wbr></wbr>_to<wbr></wbr>_library<wbr></wbr>_dir</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="polygeist.colour.html#visible_range" class="internal-link" title="polygeist.colour.visible_range">visible<wbr></wbr>_range</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="polygeist.colour.html#visible_range_nm" class="internal-link" title="polygeist.colour.visible_range_nm">visible<wbr></wbr>_range<wbr></wbr>_nm</a></code>
+            </div>
+        
+
+    </li>
+</ul> 
+
+        
+         
+        
+      </div>
+  </div>
+
+</nav>
+        </div>
+        <div id="collapseSideBar">
+          <a class="btn btn-link" onclick="toggleSideBarCollapse()" title="Toggle Sidebar Collapse">
+          </a>
+        </div> 
+        <script src="sidebartoggle.js" type="text/javascript"></script>
+       
+      </div>
+
+      <div id="main" class="">
+        
+
+        
+
+        <div class="page-header">
+          <h1 class="class"><code><code><a href="index.html" class="internal-link">polygeist</a></code><wbr></wbr>.<code><a href="polygeist.colour.html" class="internal-link" title="polygeist.colour">colour</a></code><wbr></wbr>.<code><a href="polygeist.colour.Convert.html" class="internal-link" title="polygeist.colour.Convert">Convert</a></code></code></h1>
+          <div id="showPrivate">
+            <button class="btn btn-link" onclick="togglePrivate()">Toggle Private API</button>
+          </div>
+        </div>
+
+        <div class="categoryHeader">
+          class documentation
+        </div>
+
+        <div class="extrasDocstring">
+          <p><code><span class="py-keyword">class</span> <span class="py-defname">Convert</span>:</code></p>
+          <p><a href="classIndex.html#polygeist.colour.Convert">View In Hierarchy</a></p>
+        </div>
+
+        <div class="moduleDocstring">
+          <div><p class="undocumented">Undocumented</p></div>
+        </div>
+
+        <div id="splitTables">
+          <table class="children sortable" id="id8">
+  
+  
+  <tr class="staticmethod">
+    
+    <td>Static Method</td>
+    <td><code><a href="#apply" class="internal-link" title="polygeist.colour.Convert.apply">apply</a></code></td>
+    <td>More attractive syntax for transform</td>
+  </tr><tr class="staticmethod">
+    
+    <td>Static Method</td>
+    <td><code><a href="#build_transform" class="internal-link" title="polygeist.colour.Convert.build_transform">build<wbr></wbr>_transform</a></code></td>
+    <td>Build transform matrices between two spaces, each must be equal in N dimension. Can be photometric or colourimetric. e.g.:</td>
+  </tr><tr class="staticmethod">
+    
+    <td>Static Method</td>
+    <td><code><a href="#sRGB_to_XYZ" class="internal-link" title="polygeist.colour.Convert.sRGB_to_XYZ">s<wbr></wbr>RGB_to_<wbr></wbr>XYZ</a></code></td>
+    <td>Converts an image or array of sRGB values to linear XYZ (no compression / adaptation or gamma)</td>
+  </tr><tr class="staticmethod">
+    
+    <td>Static Method</td>
+    <td><code><a href="#XYZ_to_Linear" class="internal-link" title="polygeist.colour.Convert.XYZ_to_Linear"><wbr></wbr>XYZ_to_<wbr></wbr>Linear</a></code></td>
+    <td>Converts an image or array of XYZ values to an arbitrary colour space that is linear</td>
+  </tr><tr class="staticmethod">
+    
+    <td>Static Method</td>
+    <td><code><a href="#XYZ_to_sRGB" class="internal-link" title="polygeist.colour.Convert.XYZ_to_sRGB"><wbr></wbr>XYZ_to_s<wbr></wbr>RGB</a></code></td>
+    <td>Converts an image or array of XYZ values to linear sRGB (no compression / adaptation or gamma)</td>
+  </tr><tr class="staticmethod">
+    
+    <td>Static Method</td>
+    <td><code><a href="#XYZ_to_Yxy" class="internal-link" title="polygeist.colour.Convert.XYZ_to_Yxy"><wbr></wbr>XYZ_to_<wbr></wbr>Yxy</a></code></td>
+    <td>Convert between XYZ and Yxy (2d representation of tristimulus values)</td>
+  </tr><tr class="staticmethod">
+    
+    <td>Static Method</td>
+    <td><code><a href="#Yxy_to_XYZ" class="internal-link" title="polygeist.colour.Convert.Yxy_to_XYZ"><wbr></wbr>Yxy_to_<wbr></wbr>XYZ</a></code></td>
+    <td>Convert between XYZ and Yxy (2d representation of tristimulus values)</td>
+  </tr>
+</table>
+          
+
+            
+        </div>
+
+        <div id="childList">
+          <div class="basestaticmethod">
+  
+  
+  <a name="polygeist.colour.Convert.apply">
+    
+  </a>
+  <a name="apply">
+    
+  </a>
+  <div class="functionHeader">
+    @staticmethod<br />
+    <span class="py-keyword">def</span> <span class="py-defname">apply</span>(tri, matrix):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>More attractive syntax for transform</p>
+<table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">tri</span></td><td class="fieldArgDesc">Tristimulus values (np.array Nx3)</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">matrix</span></td><td class="fieldArgDesc">Matrix to transform (np.array 3x3)</td></tr><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td colspan="2">transformed values (np.array Nx3)</td></tr></table></div>
+  </div>
+</div><div class="basestaticmethod">
+  
+  
+  <a name="polygeist.colour.Convert.build_transform">
+    
+  </a>
+  <a name="build_transform">
+    
+  </a>
+  <div class="functionHeader">
+    @staticmethod<br />
+    <span class="py-keyword">def</span> <span class="py-defname">build_transform</span>(tri_square_1, tri_square_2):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Build transform matrices between two spaces, each must be equal in N dimension. Can be photometric or colourimetric. e.g.:</p>
+<pre class="rst-literal-block">
+    Identity matrix (Max RGB)              Specific Values
+    A = [1, 0, 0;                        X = [Xr1, Xr2, Xr3;
+         0, 1, 0;                             Xg2, Xg2, Xg3;
+         0, 0, 1 ];                           Xb1, Xb2, Xb3;]
+
+    Solves mA = X
+
+    return m m^-1
+</pre>
+<table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">tri<wbr></wbr>_square<wbr></wbr>_1</span></td><td class="fieldArgDesc">First space tristimulus array  (np.array Nx3)</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">tri<wbr></wbr>_square<wbr></wbr>_2</span></td><td class="fieldArgDesc">Second space tristimulus array  (np.array Nx3)</td></tr><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td colspan="2">transform and inverse transform matrix (np.array Nx3)</td></tr></table></div>
+  </div>
+</div><div class="basestaticmethod">
+  
+  
+  <a name="polygeist.colour.Convert.sRGB_to_XYZ">
+    
+  </a>
+  <a name="sRGB_to_XYZ">
+    
+  </a>
+  <div class="functionHeader">
+    @staticmethod<br />
+    <span class="py-keyword">def</span> <span class="py-defname">sRGB_to_XYZ</span>(sRGB):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Converts an image or array of sRGB values to linear XYZ (no compression / adaptation or gamma)</p>
+<table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">s<wbr></wbr>RGB</span></td><td class="fieldArgDesc">list or image of sRGB values (np.array Nx3 or IxJx3)</td></tr><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td colspan="2">list or image of XYZ values (np.array Nx3 or IxJx3)</td></tr></table></div>
+  </div>
+</div><div class="basestaticmethod">
+  
+  
+  <a name="polygeist.colour.Convert.XYZ_to_Linear">
+    
+  </a>
+  <a name="XYZ_to_Linear">
+    
+  </a>
+  <div class="functionHeader">
+    @staticmethod<br />
+    <span class="py-keyword">def</span> <span class="py-defname">XYZ_to_Linear</span>(XYZ, transform):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Converts an image or array of XYZ values to an arbitrary colour space that is linear</p>
+<table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">XYZ</span></td><td class="fieldArgDesc">list or image of XYZ values (np.array Nx3 or IxJx3)</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">transform</span></td><td class="fieldArgDesc">matrix to go from XYZ -&gt; Space (np.matrix 3x3)</td></tr><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td colspan="2">list or image of Space values (np.array Nx3 or IxJx3)</td></tr></table></div>
+  </div>
+</div><div class="basestaticmethod">
+  
+  
+  <a name="polygeist.colour.Convert.XYZ_to_sRGB">
+    
+  </a>
+  <a name="XYZ_to_sRGB">
+    
+  </a>
+  <div class="functionHeader">
+    @staticmethod<br />
+    <span class="py-keyword">def</span> <span class="py-defname">XYZ_to_sRGB</span>(XYZ):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Converts an image or array of XYZ values to linear sRGB (no compression / adaptation or gamma)</p>
+<table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">XYZ</span></td><td class="fieldArgDesc">list or image of XYZ values (np.array Nx3 or IxJx3)</td></tr><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td colspan="2">list or image of sRGB values (np.array Nx3 or IxJx3)</td></tr></table></div>
+  </div>
+</div><div class="basestaticmethod">
+  
+  
+  <a name="polygeist.colour.Convert.XYZ_to_Yxy">
+    
+  </a>
+  <a name="XYZ_to_Yxy">
+    
+  </a>
+  <div class="functionHeader">
+    @staticmethod<br />
+    <span class="py-keyword">def</span> <span class="py-defname">XYZ_to_Yxy</span>(XYZ):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Convert between XYZ and Yxy (2d representation of tristimulus values)</p>
+<table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">XYZ</span></td><td class="fieldArgDesc">image of XYZ values (np.array IxJx3)</td></tr><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td colspan="2">image of Yxy values (np.array IxJx3)</td></tr></table></div>
+  </div>
+</div><div class="basestaticmethod">
+  
+  
+  <a name="polygeist.colour.Convert.Yxy_to_XYZ">
+    
+  </a>
+  <a name="Yxy_to_XYZ">
+    
+  </a>
+  <div class="functionHeader">
+    @staticmethod<br />
+    <span class="py-keyword">def</span> <span class="py-defname">Yxy_to_XYZ</span>(Yxy):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Convert between XYZ and Yxy (2d representation of tristimulus values)</p>
+<table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg"><wbr></wbr>Yxy</span></td><td class="fieldArgDesc">list or image of Yxy values (np.array Nx3 or IxJx3)</td></tr><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td colspan="2">list or image of Yxy values (np.array Nx3 or IxJx3)</td></tr></table></div>
+  </div>
+</div>
+        </div>
+      
+      </div>
+    </div>
+
+    <footer class="navbar navbar-default">
+
+  
+  <div class="container">
+    <a href="index.html">API Documentation</a> for polygeist,
+  generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a>
+    22.7.0 at 2023-03-29 09:44:48.
+  </div>
+
+  <!-- Search related scripts needs to be loaded at the end of HTML 
+    parsing not to introduce overhead and display HTML data asap -->
+  <script src="ajax.js" type="text/javascript"></script>
+  <script src="searchlib.js" type="text/javascript"></script>
+  <script src="search.js" type="text/javascript"></script>
+
+</footer>
+  
+    <script src="pydoctor.js" type="text/javascript"></script>
+
+  </body>
+</html>

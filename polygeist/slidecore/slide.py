@@ -68,11 +68,15 @@ class SyntheticSlide(Slide):
 
 class SpectralSlideGenerator:
     def __init__(self, width=100, height=100, filename=None, control=False):
-        self.responses = np.array([[7.10357511, 12.61506218, 13.59695489],
-                                   [8.81961536, 10.18302502, 5.08567669],
-                                   [11.02074647, 15.41804066, 12.77042165],
-                                   [17.05035857, 17.64819458, 9.17788779],
-                                   [0.45574971, 4.32897163, 1.68161384]])
+        self.responses = np.array(
+            [
+                [7.10357511, 12.61506218, 13.59695489],
+                [8.81961536, 10.18302502, 5.08567669],
+                [11.02074647, 15.41804066, 12.77042165],
+                [17.05035857, 17.64819458, 9.17788779],
+                [0.45574971, 4.32897163, 1.68161384],
+            ]
+        )
 
         image = np.zeros((height, width, 3))
         image[:, :, 0] = (np.random.random((height, width)) * 4).astype(int)
@@ -80,7 +84,7 @@ class SpectralSlideGenerator:
         # turn all DAB into BT and then spatter some DAB
         if control:
             image[image[:, :, 0] == 0, 0] = 3
-            image[np.random.random((height, width)) > .95, 0] = 0
+            image[np.random.random((height, width)) > 0.95, 0] = 0
 
         for i in np.arange(0, 5):
             image[image[:, :, 0] == i, :] = self.responses[i, :]
@@ -109,7 +113,9 @@ class AperioSlide(Slide):
         self._px_um = 0.5040
 
         # Calibration profile, to convert from Sensor RGB to sRGB or other colour space.
-        self.calibration_profile = CalibrationProfile(filename) if calibrate_image else None
+        self.calibration_profile = (
+            CalibrationProfile(filename) if calibrate_image else None
+        )
 
     def get_slide_with_pixel_resolution_in_microns(self, microns=0.5040):
         # Get the height and width of the slice

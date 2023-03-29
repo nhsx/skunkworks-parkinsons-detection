@@ -36,11 +36,13 @@ visible_range = np.arange(visible_range_nm[0], visible_range_nm[1])
 
 class Illuminant:
     """
-        Contains standard illumination functions, and the means to compute them.
+    Contains standard illumination functions, and the means to compute them.
     """
 
     def __init__(self):
-        self._D65 = np.genfromtxt(f'{path_to_library_dir}/CIE_std_illum_D65.csv', delimiter=",")
+        self._D65 = np.genfromtxt(
+            f"{path_to_library_dir}/CIE_std_illum_D65.csv", delimiter=","
+        )
         pass
 
     def get(self, function_name):
@@ -50,10 +52,10 @@ class Illuminant:
         @return: Illumination (np.array)
         """
         if "D65" in function_name:
-            fD65 = interp1d(self._D65[:, 0], self._D65[:, 1], kind='cubic')
+            fD65 = interp1d(self._D65[:, 0], self._D65[:, 1], kind="cubic")
             return fD65(visible_range)
         if "B5000K" in function_name:
-            return np.array(self.planck(visible_range / 1e9, 5000.))
+            return np.array(self.planck(visible_range / 1e9, 5000.0))
         return None
 
     @staticmethod
@@ -68,10 +70,19 @@ class Illuminant:
         c = speed_of_light  # m/s
         kb = Boltzmann  # J/molec K
 
-        return 8. * np.pi * h * c / (wavelengths ** 5. * (np.exp(h * c / (wavelengths * kb * temperature)) - 1.))
+        return (
+            8.0
+            * np.pi
+            * h
+            * c
+            / (
+                wavelengths**5.0
+                * (np.exp(h * c / (wavelengths * kb * temperature)) - 1.0)
+            )
+        )
 
     @staticmethod
-    def from_file_with_range(filename, wavelength_range, interp='cubic'):
+    def from_file_with_range(filename, wavelength_range, interp="cubic"):
         """
         Create spectra from csv file with given spectral range
         file e.g.::
@@ -85,7 +96,13 @@ class Illuminant:
         """
         file = np.genfromtxt(filename, delimiter=",")
         unique_x = file[np.unique(file[:, 0], return_index=True)[1], :]
-        model = interp1d(unique_x[:, 0], unique_x[:, 1], kind=interp, fill_value=np.nan, bounds_error=False)
+        model = interp1d(
+            unique_x[:, 0],
+            unique_x[:, 1],
+            kind=interp,
+            fill_value=np.nan,
+            bounds_error=False,
+        )
         return model(wavelength_range)
 
     @staticmethod
@@ -101,12 +118,14 @@ class Illuminant:
 
 class CMFs:
     """
-        Contains the standard colour matching functions (for humans).
+    Contains the standard colour matching functions (for humans).
     """
 
     def __init__(self):
-        self._CIE_1931_2Deg = np.genfromtxt(f'{path_to_library_dir}/CIE1931.csv', delimiter=",")
-        '''Load 1931 2deg Observer functions'''
+        self._CIE_1931_2Deg = np.genfromtxt(
+            f"{path_to_library_dir}/CIE1931.csv", delimiter=","
+        )
+        """Load 1931 2deg Observer functions"""
 
     def get(self, function_name):
         """
@@ -115,9 +134,15 @@ class CMFs:
         @return: list of functions (e.g: [X, Y, Z]) (np.array, np.array, np.array)
         """
         if "CIE_1931_2deg" in function_name:
-            fX = interp1d(self._CIE_1931_2Deg[:, 0], self._CIE_1931_2Deg[:, 1], kind='cubic')
-            fY = interp1d(self._CIE_1931_2Deg[:, 0], self._CIE_1931_2Deg[:, 2], kind='cubic')
-            fZ = interp1d(self._CIE_1931_2Deg[:, 0], self._CIE_1931_2Deg[:, 3], kind='cubic')
+            fX = interp1d(
+                self._CIE_1931_2Deg[:, 0], self._CIE_1931_2Deg[:, 1], kind="cubic"
+            )
+            fY = interp1d(
+                self._CIE_1931_2Deg[:, 0], self._CIE_1931_2Deg[:, 2], kind="cubic"
+            )
+            fZ = interp1d(
+                self._CIE_1931_2Deg[:, 0], self._CIE_1931_2Deg[:, 3], kind="cubic"
+            )
             X = fX(visible_range)
             Y = fY(visible_range)
             Z = fZ(visible_range)
@@ -142,10 +167,10 @@ class Convert:
     @staticmethod
     def XYZ_to_Linear(XYZ, transform):
         """
-           Converts an image or array of XYZ values to an arbitrary colour space that is linear
-           @arg XYZ: list or image of XYZ values (np.array Nx3 or IxJx3)
-           @arg transform: matrix to go from XYZ -> Space (np.matrix 3x3)
-           @return: list or image of Space values (np.array Nx3 or IxJx3)
+        Converts an image or array of XYZ values to an arbitrary colour space that is linear
+        @arg XYZ: list or image of XYZ values (np.array Nx3 or IxJx3)
+        @arg transform: matrix to go from XYZ -> Space (np.matrix 3x3)
+        @return: list or image of Space values (np.array Nx3 or IxJx3)
         """
         if len(XYZ.shape) < 3:
             return np.matmul(transform, [XYZ[:, 0], XYZ[:, 1], XYZ[:, 2]])
@@ -157,25 +182,35 @@ class Convert:
     @staticmethod
     def XYZ_to_sRGB(XYZ):
         """
-           Converts an image or array of XYZ values to linear sRGB (no compression / adaptation or gamma)
-           @arg XYZ: list or image of XYZ values (np.array Nx3 or IxJx3)
-           @return: list or image of sRGB values (np.array Nx3 or IxJx3)
+        Converts an image or array of XYZ values to linear sRGB (no compression / adaptation or gamma)
+        @arg XYZ: list or image of XYZ values (np.array Nx3 or IxJx3)
+        @return: list or image of sRGB values (np.array Nx3 or IxJx3)
         """
-        transform = np.matrix([[3.2404542, -1.5371385, -0.4985314],
-                               [-0.969266, 1.8760108, 0.041556],
-                               [0.0556434, -0.2040259, 1.0572252]])
+        transform = np.matrix(
+            [
+                [3.2404542, -1.5371385, -0.4985314],
+                [-0.969266, 1.8760108, 0.041556],
+                [0.0556434, -0.2040259, 1.0572252],
+            ]
+        )
         return Convert.XYZ_to_Linear(XYZ, transform)
 
     @staticmethod
     def sRGB_to_XYZ(sRGB):
         """
-           Converts an image or array of sRGB values to linear XYZ (no compression / adaptation or gamma)
-           @arg sRGB: list or image of sRGB values (np.array Nx3 or IxJx3)
-           @return: list or image of XYZ values (np.array Nx3 or IxJx3)
+        Converts an image or array of sRGB values to linear XYZ (no compression / adaptation or gamma)
+        @arg sRGB: list or image of sRGB values (np.array Nx3 or IxJx3)
+        @return: list or image of XYZ values (np.array Nx3 or IxJx3)
         """
-        transform = np.linalg.inv(np.matrix([[3.2404542, -1.5371385, -0.4985314],
-                                             [-0.969266, 1.8760108, 0.041556],
-                                             [0.0556434, -0.2040259, 1.0572252]]))
+        transform = np.linalg.inv(
+            np.matrix(
+                [
+                    [3.2404542, -1.5371385, -0.4985314],
+                    [-0.969266, 1.8760108, 0.041556],
+                    [0.0556434, -0.2040259, 1.0572252],
+                ]
+            )
+        )
         return Convert.XYZ_to_Linear(sRGB, transform)
 
     @staticmethod
@@ -188,13 +223,15 @@ class Convert:
         if len(Yxy.shape) < 3:
             X = (Yxy[:, 1] * Yxy[:, 0]) / Yxy[:, 2]
             Y = Yxy[:, 0]
-            Z = ((1. - Yxy[:, 1] - Yxy[:, 2]) * Yxy[:, 0]) / Yxy[:, 2]
+            Z = ((1.0 - Yxy[:, 1] - Yxy[:, 2]) * Yxy[:, 0]) / Yxy[:, 2]
             return X, Y, Z
         else:
             copy = Yxy.copy()
             copy[:, :, 0] = (Yxy[:, :, 1] * Yxy[:, :, 0]) / Yxy[:, :, 2]
             copy[:, :, 1] = Yxy[:, :, 0]
-            copy[:, :, 2] = ((1. - Yxy[:, :, 1] - Yxy[:, :, 2]) * Yxy[:, :, 0]) / Yxy[:, :, 2]
+            copy[:, :, 2] = ((1.0 - Yxy[:, :, 1] - Yxy[:, :, 2]) * Yxy[:, :, 0]) / Yxy[
+                :, :, 2
+            ]
             return copy
 
     @staticmethod
@@ -224,10 +261,10 @@ class Convert:
     @staticmethod
     def apply(tri, matrix):
         """
-            More attractive syntax for transform
-            @arg tri: Tristimulus values (np.array Nx3)
-            @arg matrix: Matrix to transform (np.array 3x3)
-            @return: transformed values (np.array Nx3)
+        More attractive syntax for transform
+        @arg tri: Tristimulus values (np.array Nx3)
+        @arg matrix: Matrix to transform (np.array 3x3)
+        @return: transformed values (np.array Nx3)
 
         """
         return np.matmul(matrix, tri.T)
@@ -255,7 +292,7 @@ class ColourTests(unittest.TestCase):
 
     def test_d65_cie2(self):
         """
-            Test illumination D65 against 1931 CMFs 2 deg
+        Test illumination D65 against 1931 CMFs 2 deg
         """
         # Load CMFs
         X, Y, Z = self.cmfs.get("CIE_1931_2deg")
@@ -270,34 +307,34 @@ class ColourTests(unittest.TestCase):
 
     def test_XYZ_to_Yxy_list(self):
         """
-            Test conversion between a list of XYZs and Yxy
+        Test conversion between a list of XYZs and Yxy
         """
-        Yxys = Convert.XYZ_to_Yxy(np.array([[50., 50., 50.], [60., 60., 60.]]))
+        Yxys = Convert.XYZ_to_Yxy(np.array([[50.0, 50.0, 50.0], [60.0, 60.0, 60.0]]))
 
         # Luminance should be the same
         self.assertEqual(Yxys[0][0], 50)
         self.assertEqual(Yxys[1][0], 60)
 
         # The result should be the centre of colour space (.33r for each coordinate)
-        self.assertLessEqual(np.abs(Yxys[0][1] - .3333), 0.0001)
+        self.assertLessEqual(np.abs(Yxys[0][1] - 0.3333), 0.0001)
 
     def test_Yxy_to_XYZ_list(self):
         """
-            Test conversion between a list of Yxys and XYZ
+        Test conversion between a list of Yxys and XYZ
         """
         # EE White has xy .33 and results in X = Y = Z
-        v3 = .3333333333
+        v3 = 0.3333333333
         # XYZ should be 50 50 50 and 60 60 60, one test is sufficient, as if incorrect both will be incorrect
         X, Y, Z = Convert.Yxy_to_XYZ(np.array([[50, v3, v3], [60, v3, v3]]))
-        self.assertLessEqual(abs(X[0] - 50.), .01)
-        self.assertLessEqual(abs(Z[0] - 50.), .01)
+        self.assertLessEqual(abs(X[0] - 50.0), 0.01)
+        self.assertLessEqual(abs(Z[0] - 50.0), 0.01)
 
     def test_Yxy_to_XYZ_image(self):
         """
-            Test conversion between an image of Yxys and XYZ
+        Test conversion between an image of Yxys and XYZ
         """
         # As above, but for image dimensions
-        v3 = .3333333333
+        v3 = 0.3333333333
         image = np.ones((1, 1, 3))
         image[:, :, 0] *= 50
         image[:, :, 1] *= v3
@@ -305,34 +342,42 @@ class ColourTests(unittest.TestCase):
 
         IXYZ = Convert.Yxy_to_XYZ(image)
 
-        self.assertLessEqual(abs(IXYZ[0, 0, 0] - 50.), .01)
-        self.assertLessEqual(abs(IXYZ[0, 0, 2] - 50.), .01)
+        self.assertLessEqual(abs(IXYZ[0, 0, 0] - 50.0), 0.01)
+        self.assertLessEqual(abs(IXYZ[0, 0, 2] - 50.0), 0.01)
 
     def test_XYZ_to_sRGB_list(self):
         """
-            Test conversion between a list of XYZs and Yxy
+        Test conversion between a list of XYZs and Yxy
         """
         RGB = Convert.XYZ_to_sRGB(np.array([[50, 50, 50]]))
         # Luminance should be the same
-        self.assertLessEqual(abs(RGB[0] - 60.239), .01)
+        self.assertLessEqual(abs(RGB[0] - 60.239), 0.01)
 
     def test_XYZ_to_sRGB_image(self):
         """
-            Test conversion between a list of XYZs and Yxy
+        Test conversion between a list of XYZs and Yxy
         """
         image = np.ones((2, 2, 3)) * 50
         image_rgb = Convert.XYZ_to_sRGB(image)
         # Luminance should be the same
-        self.assertLessEqual(abs(image_rgb[0, 0, 0] - 60.239), .01)
+        self.assertLessEqual(abs(image_rgb[0, 0, 0] - 60.239), 0.01)
 
     def test_sRGB_to_XYZ_backforth(self):
         v = Convert.XYZ_to_Yxy(Convert.sRGB_to_XYZ(np.array([np.eye(3)])))
-        ex = np.array([[[0.21267285, 0.63999999, 0.32999999], [0.71515217, 0.3, 0.6], [0.072175, 0.15, 0.06000001]]])
-        self.assertLessEqual(np.sum(np.abs(v - ex)), .01)
+        ex = np.array(
+            [
+                [
+                    [0.21267285, 0.63999999, 0.32999999],
+                    [0.71515217, 0.3, 0.6],
+                    [0.072175, 0.15, 0.06000001],
+                ]
+            ]
+        )
+        self.assertLessEqual(np.sum(np.abs(v - ex)), 0.01)
 
     def test_XYZ_to_Yxy_image(self):
         """
-            Test conversion between an image of XYZs and Yxy
+        Test conversion between an image of XYZs and Yxy
         """
         image = np.ones((1, 1, 3))
         image[0, 0, 0] = 50
@@ -341,17 +386,25 @@ class ColourTests(unittest.TestCase):
 
         converted = Convert.XYZ_to_Yxy(image)
         self.assertEqual(converted[:, :, 0], 50)
-        self.assertLessEqual(np.abs(converted[:, :, 1] - .3333), .0001)
-        self.assertLessEqual(np.abs(converted[:, :, 2] - .3333), .0001)
+        self.assertLessEqual(np.abs(converted[:, :, 1] - 0.3333), 0.0001)
+        self.assertLessEqual(np.abs(converted[:, :, 2] - 0.3333), 0.0001)
 
     def test_kelvin_5000_to_Yxy(self):
         """
-            Test approximation of plankian radiators without adaptation or refractive index
-            Error +- .001
+        Test approximation of plankian radiators without adaptation or refractive index
+        Error +- .001
         """
         spectra_5000k = self.illuminants.get("B5000K")
         X, Y, Z = self.cmfs.get("CIE_1931_2deg")
-        obs = np.array([[integrate(X, spectra_5000k), integrate(Y, spectra_5000k), integrate(Z, spectra_5000k)]])
+        obs = np.array(
+            [
+                [
+                    integrate(X, spectra_5000k),
+                    integrate(Y, spectra_5000k),
+                    integrate(Z, spectra_5000k),
+                ]
+            ]
+        )
         converted = Convert.XYZ_to_Yxy(obs)
-        self.assertLessEqual(np.abs(converted[0][1] - 0.34510), .001)
-        self.assertLessEqual(np.abs(converted[0][2] - 0.35161), .001)
+        self.assertLessEqual(np.abs(converted[0][1] - 0.34510), 0.001)
+        self.assertLessEqual(np.abs(converted[0][2] - 0.35161), 0.001)

@@ -10,10 +10,10 @@ import fnmatch
 import pathlib
 import shutil
 
-CONTROL = 'C'
-AD = 'AD'
-PD = 'PD'
-MSA = 'MSA'
+CONTROL = "C"
+AD = "AD"
+PD = "PD"
+MSA = "MSA"
 
 
 def make_path(path):
@@ -25,19 +25,19 @@ def copy_file(source, dest):
 
 
 class SegmentationFilesDirectoryHandler:
-    def __init__(self, root, filetype='.jpg'):
+    def __init__(self, root, filetype=".jpg"):
         self.root = root
         # Where are we putting copies of the data for training and test
         self.training_dump_path = root + "/partitioned_data/"
-        self.training_dir_name = 'train'
-        self.validation_dir_name = 'val'
+        self.training_dir_name = "train"
+        self.validation_dir_name = "val"
         self.conditions = None
         self.filetype = filetype
 
     def make_train_and_validation_folders_for_conditions(self, conditions=None):
 
         if conditions is None:
-            self.conditions = ['Controls', 'PD']
+            self.conditions = ["Controls", "PD"]
         else:
             self.conditions = conditions
         # Make the root path
@@ -47,9 +47,15 @@ class SegmentationFilesDirectoryHandler:
             for cond in self.conditions:
                 make_path(f"{self.training_dump_path}/{run}/{cond}/")
 
-    def split_and_copy_root_data_to_train_and_validation(self, case_filter_for_train=None,
-                                                         include_filter=None, exclude_filter=None, condition=None,
-                                                         slide_index_filter=None, training=False):
+    def split_and_copy_root_data_to_train_and_validation(
+        self,
+        case_filter_for_train=None,
+        include_filter=None,
+        exclude_filter=None,
+        condition=None,
+        slide_index_filter=None,
+        training=False,
+    ):
         files_in_root = glob(f"{self.root}/*{self.filetype}")
         for file in files_in_root:
             # Get the slide and case ID
@@ -83,20 +89,26 @@ class SegmentationFilesDirectoryHandler:
                     continue
 
             # Change the target dir by training flag
-            target_dir = self.training_dir_name if training else self.validation_dir_name
+            target_dir = (
+                self.training_dir_name if training else self.validation_dir_name
+            )
 
             # Copy the file to the training dir
-            copy_file(file, f"{self.training_dump_path}/{target_dir}/{condition}/{base}")
+            copy_file(
+                file, f"{self.training_dump_path}/{target_dir}/{condition}/{base}"
+            )
 
 
-def plot_roc(matched: np.ndarray,
-             non_matched: np.ndarray,
-             label='ROC',
-             title='ROC Curve',
-             axes=None,
-             steps=1000,
-             verbose=False,
-             max_value=None):
+def plot_roc(
+    matched: np.ndarray,
+    non_matched: np.ndarray,
+    label="ROC",
+    title="ROC Curve",
+    axes=None,
+    steps=1000,
+    verbose=False,
+    max_value=None,
+):
     """
     Plot an ROC curve for the given matched and non-matched scores
     :param matched: A numpy array of matched scores
@@ -114,7 +126,9 @@ def plot_roc(matched: np.ndarray,
     h = []
     fa = []
     # Plot a ROC for <steps> possible thresholds from 0 .. max score
-    for hits, false_alarms, a, p, s, f1 in evaluate_threshold_sweep(steps, matched, non_matched, verbose, max_value):
+    for hits, false_alarms, a, p, s, f1 in evaluate_threshold_sweep(
+        steps, matched, non_matched, verbose, max_value
+    ):
         h.append(hits)
         fa.append(false_alarms)
     h = np.array(h)
@@ -127,8 +141,13 @@ def plot_roc(matched: np.ndarray,
     return axes
 
 
-def evaluate_threshold_sweep(steps: int, matched: np.ndarray, non_matched: np.ndarray, verbose: bool = False,
-                             max_value: float = None) -> Iterable[Tuple[float, float, float, float, float, float]]:
+def evaluate_threshold_sweep(
+    steps: int,
+    matched: np.ndarray,
+    non_matched: np.ndarray,
+    verbose: bool = False,
+    max_value: float = None,
+) -> Iterable[Tuple[float, float, float, float, float, float]]:
     """
     Sweep through C{steps} possible thresholds, between 0 and the max value in the distribution (or C{max_score}, if
     given), and evaluate the hit and false alarm rate at each point. Yields a generator of hit-rate (recall/TPR),
@@ -158,21 +177,29 @@ def evaluate_threshold_sweep(steps: int, matched: np.ndarray, non_matched: np.nd
         else:
             f1 = -1
         if verbose:
-            print(f"Step:{i}: Thresh {test_threshold} gives {tpr} hits and {fpr} FAs, "
-                  f"S={s}, P={precision}, F1={f1}, A={accuracy}")
+            print(
+                f"Step:{i}: Thresh {test_threshold} gives {tpr} hits and {fpr} FAs, "
+                f"S={s}, P={precision}, F1={f1}, A={accuracy}"
+            )
         yield tpr, fpr, accuracy, precision, s, f1
 
 
 def collect_cases(config):
     # Collect the positive and negative cases
     positive_cases = []
-    for p in glob(config["root_directory"] + config["positive_case_folder"] + "/*/", recursive=True):
+    for p in glob(
+        config["root_directory"] + config["positive_case_folder"] + "/*/",
+        recursive=True,
+    ):
         # Get the case ID
         case = os.path.basename(os.path.normpath(p))
         positive_cases.append(case)
 
     negative_cases = []
-    for p in glob(config["root_directory"] + config["negative_case_folder"] + "/*/", recursive=True):
+    for p in glob(
+        config["root_directory"] + config["negative_case_folder"] + "/*/",
+        recursive=True,
+    ):
         # Get the case ID
         case = os.path.basename(os.path.normpath(p))
         negative_cases.append(case)
@@ -197,7 +224,7 @@ def calc_median_score_list(cases, path, rgb_threshold=20):
 
 
 def region_count_score_list(cases, results):
-    # Count for comparison with simple median classifier 
+    # Count for comparison with simple median classifier
     score_list = []
     for case in cases:
         count_list = []
@@ -220,7 +247,9 @@ def load_filenames_and_generate_conditions(list_filename):
     case_dict = {}
     for f in lines:
         case, slide_index = get_case_and_slide(f)
-        condition = CONTROL if CONTROL in f else (AD if AD in f else (MSA if MSA in f else PD))
+        condition = (
+            CONTROL if CONTROL in f else (AD if AD in f else (MSA if MSA in f else PD))
+        )
         if case not in case_dict:
             case_dict[case] = condition
     return case_dict
@@ -230,17 +259,17 @@ def load_filenames_and_generate_conditions(list_filename):
 # their filename, so here we just parse the names to get the case and slide
 def get_case_and_slide(fname):
     f = os.path.basename(fname)
-    case = f.split('-')[0]
-    for erroneous in ['a', 'b', '+', 'A', 'B']:
-        f = f.replace(erroneous, '')
-    slide = int(f.split('-')[1].split('_')[0])
+    case = f.split("-")[0]
+    for erroneous in ["a", "b", "+", "A", "B"]:
+        f = f.replace(erroneous, "")
+    slide = int(f.split("-")[1].split("_")[0])
     return case, slide
 
 
 def load_jsons_from_directory(directory):
     slide_parsed_jsons = {}
     for root, dirnames, filenames in os.walk(directory):
-        for filename in fnmatch.filter(filenames, '*.json'):
+        for filename in fnmatch.filter(filenames, "*.json"):
             with open(os.path.join(root, filename), "r") as read_file:
                 data = json.load(read_file)
                 slide_parsed_jsons[filename] = data

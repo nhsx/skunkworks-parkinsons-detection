@@ -19,7 +19,9 @@ import numpy as np
 from skimage.transform import resize
 
 # Configuration
-state_path = os.path.join(os.path.dirname(__file__), '..', 'ext/ideepcolor/models/pytorch/caffemodel.pth')
+state_path = os.path.join(
+    os.path.dirname(__file__), "..", "ext/ideepcolor/models/pytorch/caffemodel.pth"
+)
 
 """Location of the synthetic staining model weights"""
 
@@ -60,7 +62,9 @@ def colourise_slide_and_segment(
     pixel_width_in_microns = 0.504 * 4
 
     slide = SyntheticSlide(slide_file) if is_synthetic else AperioSlide(slide_file)
-    slide_at_um = slide.get_slide_with_pixel_resolution_in_microns(pixel_width_in_microns)
+    slide_at_um = slide.get_slide_with_pixel_resolution_in_microns(
+        pixel_width_in_microns
+    )
 
     # Set the slide window size to correspond with our network,
     # we will use  a broader window, which we used during some initial testing
@@ -85,7 +89,7 @@ def colourise_slide_and_segment(
         for y in np.arange(0, yy - slide.window_size, slide.window_size):
 
             # Get our ROI for this pass in the network
-            roi = slide_at_um[y:y + slide.window_size, x:x + slide.window_size, :]
+            roi = slide_at_um[y : y + slide.window_size, x : x + slide.window_size, :]
 
             # Here we are producing our 'suggestion' mask for the network,
             # we mask values which are stained brown
@@ -125,7 +129,9 @@ def colourise_slide_and_segment(
                 colour_model.get_img_fullres()
             )  # get image at full resolution
 
-            output_c[y:y + slide.window_size, x:x + slide.window_size, :] = img_out_fullres.copy()
+            output_c[
+                y : y + slide.window_size, x : x + slide.window_size, :
+            ] = img_out_fullres.copy()
 
             # Calculate the difference in our green channel,
             # and only dump portions of interest

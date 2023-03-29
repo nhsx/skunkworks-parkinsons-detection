@@ -4,10 +4,17 @@ import numpy as np
 
 class VirtualColourimetricScope:
     """
-        Non-physically (Not path tracing) based model of an imaging device.
+    Non-physically (Not path tracing) based model of an imaging device.
     """
-    def __init__(self, filename_sensor_r, filename_sensor_g, filename_sensor_b, filename_illumination,
-                 wl=np.arange(300, 1100)):
+
+    def __init__(
+        self,
+        filename_sensor_r,
+        filename_sensor_g,
+        filename_sensor_b,
+        filename_illumination,
+        wl=np.arange(300, 1100),
+    ):
         """
         Constructor for Virtual Scope, builds sensor and illumination functions required to decompose
         RGB images
@@ -24,7 +31,7 @@ class VirtualColourimetricScope:
         self.b_function = pc.Illuminant.from_file_with_range(filename_sensor_b, wl)
         self.ls = pc.Illuminant.from_file_with_range(filename_illumination, wl)
 
-    def response(self, filter_function, gamma=1.):
+    def response(self, filter_function, gamma=1.0):
         """
         Produce a tristimulus response for the virtual scope, given a filter function
         @arg filter_function: Transmission or reflectance function, as a function of self.wl  (np.array)
@@ -43,7 +50,3 @@ class VirtualColourimetricScope:
 
         # return tristimulus values
         return r, g, b
-
-
-
-

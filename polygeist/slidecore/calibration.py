@@ -19,7 +19,9 @@ def generate_icc_to_srgb_transform(icc_profile):
     sRGB_profile = ImageCms.createProfile("sRGB")
 
     """ Build the icc to SRGB transform and return it"""
-    return ImageCms.buildTransformFromOpenProfiles(icc_profile, sRGB_profile, "RGB", "RGB")
+    return ImageCms.buildTransformFromOpenProfiles(
+        icc_profile, sRGB_profile, "RGB", "RGB"
+    )
 
 
 def get_icc_profile_from_slide(filename):
@@ -30,14 +32,14 @@ def get_icc_profile_from_slide(filename):
     """
 
     """ Slides are usually glorified TIFF files, while tifffile might not be able to decode the image
-        data, it should be able to decode the header file, where the ICC profile resides.  Aperio slides load 
+        data, it should be able to decode the header file, where the ICC profile resides.  Aperio slides load
         correctly.
     """
     try:
         with tifffile.TiffFile(filename) as tiff:
             for page in tiff.pages:
                 for tag in page.tags:
-                    if 'ColorProfile' in tag.name:
+                    if "ColorProfile" in tag.name:
                         # It is conceivable that each layer could have a different profile, but in reality if we see
                         # a tag with a color profile, we should expect every layer in that image to have been
                         # taken with the same microscope, at the same time, with the same profile.  So we will
@@ -52,11 +54,14 @@ def get_icc_profile_from_slide(filename):
 
 
 class CalibrationProfile:
-    """ Chromatic calibration profile, representing the sensor information from a device"""
+    """Chromatic calibration profile, representing the sensor information from a device"""
+
     def __init__(self, filename=None):
         self.base_icc_profile = get_icc_profile_from_slide(filename)
         """ The loaded profile from a slide/image for the purpose of building a colour transform """
-        self.microscope_to_sRGB_transform = generate_icc_to_srgb_transform(self.base_icc_profile)
+        self.microscope_to_sRGB_transform = generate_icc_to_srgb_transform(
+            self.base_icc_profile
+        )
 
     def convert_to_srgb(self, numpy_image):
         """
@@ -69,10 +74,10 @@ class CalibrationProfile:
         # This allows PIL to modify the array without a copy.
         pil_view_on_slide.readonly = False
         # Apply the transformation from sensor RGB to sRGB in place.
-        ImageCms.applyTransform(pil_view_on_slide, self.microscope_to_sRGB_transform, inPlace=True)
+        ImageCms.applyTransform(
+            pil_view_on_slide, self.microscope_to_sRGB_transform, inPlace=True
+        )
 
         # Suppress type error as PIL Image is iterable as something `array_like`
         # noinspection PyTypeChecker
         return np.asarray(pil_view_on_slide)
-
-

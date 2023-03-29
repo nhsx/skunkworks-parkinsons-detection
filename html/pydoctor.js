@@ -5,7 +5,7 @@ function initPrivate() {
     if (!params || !parseInt(params.get('private'))) {
         var show = false;
         var hash = document.location.hash;
-        
+
         if (hash != '') {
             var anchor = document.querySelector('a[name="' + hash.substring(1) + '"]');
             show = anchor && anchor.parentNode.classList.contains('private');

@@ -211,7 +211,7 @@ def generate_fake_slide_data(
             segment[:, :, 1] += deviation
             segment[:, :, 2] += deviation
 
-            slide[y:y + ypix, x:x + xpix, :] = segment.copy()
+            slide[y : y + ypix, x : x + xpix, :] = segment.copy()
             iteration += 1
 
     # Simulate cortex area, with white slide background

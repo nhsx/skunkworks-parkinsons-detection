@@ -137,7 +137,9 @@ def train_model(
                     )
 
                     # Greater than 0 will be class 1
-                    preds = (outputs > 0 if strict else outputs > .5).type(torch.HalfTensor)
+                    preds = (outputs > 0 if strict else outputs > 0.5).type(
+                        torch.HalfTensor
+                    )
 
                     # backward + optimize only if in training phase
                     if phase == "train":

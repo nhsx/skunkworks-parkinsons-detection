@@ -17,7 +17,7 @@ function httpGetPromise(url) {
     return promise
 }
 
-function httpGet(url, onload, onerror) { 
+function httpGet(url, onload, onerror) {
     if (_cache[url]) {
         _cachedHttpGet(url, onload, onerror);
     }
@@ -30,11 +30,11 @@ function _cachedHttpGet(url, onload, onerror) {
     setTimeout(() => { onload(_cache[url]) }, 0);
 }
 
-function _httpGet(url, onload, onerror) {   
+function _httpGet(url, onload, onerror) {
 
     var xobj = new XMLHttpRequest();
     xobj.open('GET', url, true); // Asynchronous
-    
+
     xobj.onload = function () {
         // add document to cache.
         _cache[url] = xobj.responseText;
@@ -46,5 +46,5 @@ function _httpGet(url, onload, onerror) {
         onerror(error)
     };
 
-    xobj.send(null);  
+    xobj.send(null);
 }

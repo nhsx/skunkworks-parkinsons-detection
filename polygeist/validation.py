@@ -52,7 +52,9 @@ def plot_roc(
     }
     # Plot a ROC for <steps> possible thresholds from 0 .. max score
 
-    for hits, false_alarms, a, p, s, f1 in evaluate_threshold_sweep(steps, matched, non_matched, verbose, max_value):
+    for hits, false_alarms, a, p, s, f1 in evaluate_threshold_sweep(
+        steps, matched, non_matched, verbose, max_value
+    ):
         h.append(hits)
         fa.append(false_alarms)
         # Stats
@@ -103,9 +105,7 @@ def _create_dataloader(training_dump_path: str, batch_size: int):
     )
 
     # Create validation dataloader
-    return DataLoader(
-        image_dataset, batch_size=batch_size, shuffle=True, num_workers=4
-    )
+    return DataLoader(image_dataset, batch_size=batch_size, shuffle=True, num_workers=4)
 
 
 def _t2n(tensor):

@@ -4,13 +4,10 @@
 
 ![Banner of NHS AI Lab Skunkworks ](docs/banner.png)
 
-# NHS AI Lab Skunkworks project: Parkinson's Disease Pathology Prediction
+# NHS AI Lab Skunkworks project: Parkinson's Disease Pathology Prediction using Colourimetry and Machine Learning
 
-> A pilot project for the NHS AI (Artificial Intelligence) Lab Skunkworks team, "Parkinson's Disease Pathology Prediction" (Automatic segmentation and detection of Parkinson's disease pathology using synthetic staining and deep neural networks).
+> A pilot project for the NHS AI (Artificial Intelligence) Lab Skunkworks team, "Parkinson's Disease Pathology Prediction" (Automatic Sample Decomposition & Detection of Proteinopathy).
 
-"Parkinson's Disease Pathology Prediction" was selected as a project in 2022 following a successful pitch to the AI Skunkworks problem-sourcing programme.
-
-![Image of model segmentation approach](docs/segmentation.png)
 
 ## Intended Use
 
@@ -26,11 +23,11 @@ The identification of Parkinson's Disease (PD) from post-mortem brain slices is 
 
 [Parkinson's UK](https://www.parkinsons.org.uk/) Brain Bank, operating in partnership with [Imperial College London](https://www.imperial.ac.uk/), has produced a dataset containing digitised slices of brains exhibiting various stages of PD pathology; along with control cases, some of which have associated pathology and others which are neurotypical. This dataset is much larger (over 400 cases), more consistent, and of higher quality (all have been stained with the same protocol and imaged within the same laboratory) than has been documented elsewhere in the literature; including those found in a meta-analysis study on detection of neurological disorders containing over 200 papers (Lima et al., 2022).
 
-The project team, consisting of neuroscientists and subject matter experts from [Imperial](https://www.imperial.ac.uk/), [NHS AI Lab Skunkworks](https://transform.england.nhs.uk/ai-lab/), [Parkinson's UK](https://www.parkinsons.org.uk/), and [Polygeist](https://polygei.st) have undertaken a 12 week project through the Home Office's [Accelerated Capability Environment (ACE)](https://www.gov.uk/government/groups/accelerated-capability-environment-ace) to examine the possibility of producing a Proof-of-Concept (PoC) tool to automatically load, enhance and ultimately classify those brain scans. The initial focus of the project was to make a tool that could make a biomarker of PD, the protein 𝛼-synuclein (𝛼-syn), more visible to the pathologist; saving time in searching for the protein manually. This goal was quickly reached, producing a tool that could "synthetically stain" the 𝛼-syn, marking regions of interest in a high-contrast bright green, making them quickly identifiable for the pathologist. Statistical analysis of the synthetically stained images showed that very few regions in the control group were stained compared to the PD group, raising the possibility that an automatic classifier could be developed, which became a stretch goal for the project.
+The project team, consisting of neuroscientists and subject matter experts from [Imperial](https://www.imperial.ac.uk/), [NHS AI Lab Skunkworks](https://transform.england.nhs.uk/ai-lab/), [Parkinson's UK](https://www.parkinsons.org.uk/), and [Polygeist](https://polygei.st) have undertaken a 20 week project through the Home Office's [Accelerated Capability Environment (ACE)](https://www.gov.uk/government/groups/accelerated-capability-environment-ace) to examine the possibility of producing a Proof-of-Concept (PoC) tool to automatically load, and classify those brain scans. The initial focus of the project was to make a tool that could automatically identify a biomarker of PD, the protein 𝛼-synuclein (𝛼-syn); saving time in searching for the protein manually.  A stretch goal of the project was to extent that technology to automatically identify two other proteins (Tau, and β-amyloid). This goal was quickly reached, producing a tool that could detect all three proteins, and effectively measure them.  Making them quickly identifiable for the pathologist, and allowing statistical analyses of individual cases and groups to be conducted. Statistical analysis of the images showed that over 90% of the PD cases could be automatically detected without false alarms, and that the severity and progression of the pathology could be measured.
 
 ## Report
 
-A [full technical report](https://www.biorxiv.org/content/10.1101/2022.08.30.505459v1) including background, model selection, performance metrics and known limitations, and detailing the data pipeline/processes employed will shortly be published on arxiv.org.
+A [full technical report](docs/skunkworks-phase-2-technical-report.pdf) including background, model selection, performance metrics and known limitations, and detailing the data pipeline/processes employed will shortly be published on arxiv.org.
 
 ## Getting Started
 
@@ -39,9 +36,7 @@ A [full technical report](https://www.biorxiv.org/content/10.1101/2022.08.30.505
 Note, if the submodules do not automaticaly download they should be manually downloaded
 (this occurs when they are not in the master branch)
 - ```git submodule update --init```
-2. Download the colorization model weights (run in the project root folder)
-- ```wget http://colorization.eecs.berkeley.edu/siggraph/models/caffemodel.pth -O ext/ideepcolor/models/pytorch/caffemodel.pth```
-3. Create the virtual environment as below
+2. Create the virtual environment as below
 
 ### Environment Setup
 
@@ -74,39 +69,24 @@ CUDA_HOME=/usr/local/cuda-11.3 pip install -v \
   --global-option="--cuda_ext" \
   ./
 ```
-The codebase performs three functions (artificial staining, classifier training and inference) these are demonstrated through the following three aspects:
-1. [A Python API](https://nhsx.github.io/skunkworks-parkinsons-detection/)
-2. [A Jupyter Notebook](notebook/stain_and_train_for_DMNoV.ipynb) (to be viewed via ```jupyter-lab```), and
-3. [A CLI walkthrough](walkthrough/README.md) (examples to be run from command line)
+
+The codebase consists of a number of libraries for processing pathology samples, and documentation of the development process.  The full processing pipeline requires these samples, however there is a detailed walkthrough in: [A Jupyter Notebook](notebook/PD_Classification_Using_Colourimetry_And_ML.ipynb) (to be viewed via ```jupyter-lab```), and
 
 *Note:* A GPU is required to run these examples. The work has been developed and tested using an NVIDIA RTX 3090 (24GB).
 
-### Integration test
-
-An end-to-end integration test (GPU required) can be run from the main project directory:
-
-```bash
-./tests/integration_test.sh
-```
-
-See the [integration test documentation](tests/) for more information.
-
 ## Codebase Structure
 
-- docs: Project report ([Also available on biorxiv.org](https://www.biorxiv.org/content/10.1101/2022.08.30.505459v1))
-- html: [Python API documentation](https://nhsx.github.io/skunkworks-parkinsons-detection/)
-- notebook: End-to-end demonstration of the technique
+- Data: Sample filenames and conditions, as well as staging information
+- docs: Project report
+- notebook: End-to-end demonstration of the technique, the work package outputs for exploring the classification of each protein are also available.
 - polygeist: Source code
-  - CLI: Command line interface
-  - CNN: Convolutional Neural Network model
+  - CNN: Convolutional Neural Network model, PDNet
   - slidecore: Slide data interface
   - data_faker: Fake data generator (including examples)
-- walkthrough: End-to-end demonstration of the CLI
+  - colour: A colour management library for controlling the calibration of samples
+  - virtualscope: A model microscope for modelling the sensor responses of the system used to capture the samples.
+- spectral: Calibration information used in the modelling of the microscope and the protein stains.
 - ext: External dependencies
-
-In addition to an example fake dataset and directory structure (Data/fake), a tar file containing this empty directory structure is included in the 'docs' folder for use with real data. This defined structure is required and expected by the CLI tools, the example code and the notebook.
-
-Python API documentation is built using the `sh make_docs.sh` command, and automatically deploys to https://nhsx.github.io/skunkworks-parkinsons-detection/.
 
 ## NHS AI Lab Skunkworks
 The project is supported by the NHS AI Lab Skunkworks, which exists within the NHS AI Lab at NHSX to support the health and care community to rapidly progress ideas from the conceptual stage to a proof of concept.

@@ -125,7 +125,7 @@ def generate_fake_slide_data(
         num_vertices=16,
     )
     # convert to numpy so we can use it as a mask
-    mask = np.array(_mask.getdata()).reshape(_mask.size[0], _mask.size[1], 3)
+    mask = np.array(_mask.getdata()).reshape((_mask.size[0], _mask.size[1], 3))
 
     # iteration counter for the seed
     iteration = 0

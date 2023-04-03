@@ -5,16 +5,18 @@ pre-commit
 slideio==1.0.3
 numpy==1.23.1
 opencv-python==4.6.0.66
-scikit-image==0.19.3
 scikit-learn==1.1.1
 matplotlib==3.5.2
 tqdm==4.64.0
-lycon==0.2.0
+pandas==1.5.3
 pqdm==0.2.0
-imageio==2.19.5
 perlin_noise==1.12
 tensorboard==2.9.1
 timm==0.5.4
+tifffile==2022.10.10
+scikit-image==0.20.0
+imageio==2.26.0
+
 
 # Jupyter Labs
 jupyterlab==3.4.4

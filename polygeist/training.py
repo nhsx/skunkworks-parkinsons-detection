@@ -13,10 +13,11 @@ import torch.nn as nn
 import torch.optim as optim
 
 # NV AMP
-from apex import amp
+from ext.apex.apex import amp
+from torch.utils.data import DataLoader
 from torch.utils.tensorboard import SummaryWriter
 from torchvision import datasets, transforms
-from tqdm.notebook import tqdm
+from tqdm import tqdm
 
 # Import our network
 from polygeist.CNN.model import PDNet
@@ -27,6 +28,7 @@ def train_model(
     model_dump_dir: str,
     batch_size: int = 32,
     num_epochs: int = 500,
+    strict: bool = False,
 ) -> str:
     """
     Train the model using PD and Control training data.
@@ -34,6 +36,7 @@ def train_model(
     @arg model_dump_dir: Directory where the model weights (checkpoint) should be saved
     @arg batch_size: Size of minibatch
     @arg num_epochs: Number of training epochs
+    @arg strict: Use any confidence as a sign of positive group. (P = conf > 0 if strict else conf > .5)
     @return: name of the final checkpoint file
     """
 
@@ -80,7 +83,7 @@ def train_model(
 
     # Create training and validation dataloaders
     dataloaders_dict = {
-        x: torch.utils.data.DataLoader(
+        x: DataLoader(
             image_datasets[x], batch_size=batch_size, shuffle=True, num_workers=4
         )
         for x in ["train", "val"]
@@ -134,7 +137,9 @@ def train_model(
                     )
 
                     # Greater than 0 will be class 1
-                    preds = (outputs > 0).type(torch.HalfTensor)
+                    preds = (outputs > 0 if strict else outputs > 0.5).type(
+                        torch.HalfTensor
+                    )
 
                     # backward + optimize only if in training phase
                     if phase == "train":

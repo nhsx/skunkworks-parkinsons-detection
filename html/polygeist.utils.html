@@ -1,0 +1,879 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+          "DTD/xhtml1-strict.dtd">
+<html>
+
+
+  <head>
+
+    <title>polygeist.utils</title>
+    <meta name="generator" content="pydoctor 22.7.0">
+
+    </meta>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1" />
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="apidocs.css" />
+    <link rel="stylesheet" type="text/css" href="extra.css" />
+</head>
+
+  <body>
+
+
+
+    <nav class="navbar navbar-default mainnavbar">
+
+
+  <div class="container-fluid">
+
+
+    <div class="navbar-header">
+
+      <div class="navlinks">
+        <span class="navbar-brand">
+          polygeist <a href="index.html">API Documentation</a>
+        </span>
+
+        <a href="moduleIndex.html">
+          Modules
+        </a>
+
+        <a href="classIndex.html">
+          Classes
+        </a>
+
+        <a href="nameIndex.html">
+          Names
+        </a>
+
+        <div id="search-box-container">
+          <div class="input-group">
+            <input id="search-box" type="search" name="search-query" placeholder="Search..." aria-label="Search" minlength="2" class="form-control" autocomplete="off" />
+
+            <span class="input-group-btn">
+              <a style="display: none;" class="btn btn-default" id="search-clear-button" title="Clear" onclick="clearSearch()"><img src="fonts/x-circle.svg" alt="Clear" /></a>
+              <a class="btn btn-default" id="search-help-button" title="Help" onclick="toggleSearchHelpText()"><img src="fonts/info.svg" alt="Help" /></a>
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+      <div id="search-results-container" style="display: none;">
+
+        <div id="search-buttons">
+          <span class="label label-default" id="search-docstrings-button">
+          <label class="checkbox-inline">
+            <input type="checkbox" id="toggle-search-in-docstrings-checkbox" value="false" onclick="toggleSearchInDocstrings()">
+              search in docstrings
+            </input>
+          </label>
+          </span>
+
+        </div>
+
+        <noscript>
+            <h1>Cannot search: JavaScript is not supported/enabled in your browser.</h1>
+        </noscript>
+
+        <div class="hint" id="search-help-box">
+          <p class="rst-last">
+
+            Search bar offers the following options:
+            <ul>
+                <li>
+                  <strong>Term presence.</strong> The below example searches for documents that
+                    must contain “foo”, might contain “bar” and must not contain “baz”: <code>+foo bar -baz</code>
+                </li>
+
+                <li>
+                  <strong>Wildcards.</strong> The below example searches for documents with words beginning with “foo”: <code>foo*</code>
+                </li>
+
+                <li>
+                  <strong>Search in specific fields.</strong> The following search matches all objects
+                  in "twisted.mail" that matches “search”: <code>+qname:twisted.mail.* +search</code>
+
+                  <p>
+                    Possible fields: 'name', 'qname' (fully qualified name), 'docstring', and 'kind'.
+                    Last two fields are only applicable if "search in docstrings" is enabled.
+                  </p>
+                </li>
+
+                <li>
+                  <strong>Fuzzy matches.</strong> The following search matches all documents
+                  that have a word within 1 edit distance of “foo”: <code>foo~1</code>
+                </li>
+            </ul>
+
+          </p>
+        </div>
+
+        <div id="search-status"> </div>
+
+        <div class="warning" id="search-warn-box" style="display: none;">
+          <p class="rst-last"><span id="search-warn"></span></p>
+        </div>
+
+        <table id="search-results">
+          <!-- Filled dynamically by JS -->
+        </table>
+
+        <div style="margin-top: 8px;">
+          <p>Results provided by <a href="https://lunrjs.com">Lunr.js</a></p>
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+</nav>
+
+    <div class="container-fluid">
+
+      <!-- Side navigation -->
+      <div class="sidebarcontainer" style="display: none;">
+
+        <div class="sidebar"><nav class="sidebar">
+
+
+  <div>
+
+      <div class="thingTitle">
+        <span>Module</span>
+        <code class="thisobject"><a href="polygeist.utils.html" class="internal-link" title="This module">utils</a></code>
+      </div>
+
+      <div>
+
+
+
+
+
+        <div class="childrenKindTitle">Classes</div>
+        <ul>
+
+    <li class="">
+
+
+
+
+
+            <div class="itemName"><code><a href="polygeist.utils.SegmentationFilesDirectoryHandler.html" class="internal-link" title="polygeist.utils.SegmentationFilesDirectoryHandler"><wbr></wbr>Segmentation<wbr></wbr>Files<wbr></wbr>Directory<wbr></wbr>Handler</a></code>
+            </div>
+
+
+    </li>
+</ul>
+
+        <div class="childrenKindTitle">Functions</div>
+        <ul>
+
+    <li class="">
+
+
+
+
+
+            <div class="itemName"><code><a href="#calc_median_score_list" class="internal-link" title="polygeist.utils.calc_median_score_list">calc<wbr></wbr>_median<wbr></wbr>_score<wbr></wbr>_list</a></code>
+            </div>
+
+
+    </li><li class="">
+
+
+
+
+
+            <div class="itemName"><code><a href="#collect_cases" class="internal-link" title="polygeist.utils.collect_cases">collect<wbr></wbr>_cases</a></code>
+            </div>
+
+
+    </li><li class="">
+
+
+
+
+
+            <div class="itemName"><code><a href="#copy_file" class="internal-link" title="polygeist.utils.copy_file">copy<wbr></wbr>_file</a></code>
+            </div>
+
+
+    </li><li class="">
+
+
+
+
+
+            <div class="itemName"><code><a href="#evaluate_threshold_sweep" class="internal-link" title="polygeist.utils.evaluate_threshold_sweep">evaluate<wbr></wbr>_threshold<wbr></wbr>_sweep</a></code>
+            </div>
+
+
+    </li><li class="">
+
+
+
+
+
+            <div class="itemName"><code><a href="#get_case_and_slide" class="internal-link" title="polygeist.utils.get_case_and_slide">get<wbr></wbr>_case<wbr></wbr>_and<wbr></wbr>_slide</a></code>
+            </div>
+
+
+    </li><li class="">
+
+
+
+
+
+            <div class="itemName"><code><a href="#load_filenames_and_generate_conditions" class="internal-link" title="polygeist.utils.load_filenames_and_generate_conditions">load<wbr></wbr>_filenames<wbr></wbr>_and<wbr></wbr>_generate<wbr></wbr>_conditions</a></code>
+            </div>
+
+
+    </li><li class="">
+
+
+
+
+
+            <div class="itemName"><code><a href="#load_jsons_from_directory" class="internal-link" title="polygeist.utils.load_jsons_from_directory">load<wbr></wbr>_jsons<wbr></wbr>_from<wbr></wbr>_directory</a></code>
+            </div>
+
+
+    </li><li class="">
+
+
+
+
+
+            <div class="itemName"><code><a href="#make_path" class="internal-link" title="polygeist.utils.make_path">make<wbr></wbr>_path</a></code>
+            </div>
+
+
+    </li><li class="">
+
+
+
+
+
+            <div class="itemName"><code><a href="#plot_roc" class="internal-link" title="polygeist.utils.plot_roc">plot<wbr></wbr>_roc</a></code>
+            </div>
+
+
+    </li><li class="">
+
+
+
+
+
+            <div class="itemName"><code><a href="#region_count_score_list" class="internal-link" title="polygeist.utils.region_count_score_list">region<wbr></wbr>_count<wbr></wbr>_score<wbr></wbr>_list</a></code>
+            </div>
+
+
+    </li>
+</ul>
+
+
+
+
+        <div class="childrenKindTitle">Variables</div>
+        <ul>
+
+    <li class="">
+
+
+
+
+
+            <div class="itemName"><code><a href="#AD" class="internal-link" title="polygeist.utils.AD">AD</a></code>
+            </div>
+
+
+    </li><li class="">
+
+
+
+
+
+            <div class="itemName"><code><a href="#CONTROL" class="internal-link" title="polygeist.utils.CONTROL">CONTROL</a></code>
+            </div>
+
+
+    </li><li class="">
+
+
+
+
+
+            <div class="itemName"><code><a href="#MSA" class="internal-link" title="polygeist.utils.MSA">MSA</a></code>
+            </div>
+
+
+    </li><li class="">
+
+
+
+
+
+            <div class="itemName"><code><a href="#PD" class="internal-link" title="polygeist.utils.PD">PD</a></code>
+            </div>
+
+
+    </li>
+</ul>
+
+
+
+
+      </div>
+  </div><div>
+
+      <div class="thingTitle">
+        <span>Package</span>
+        <code><a href="index.html" class="internal-link" title="The parent of this module">polygeist</a></code>
+      </div>
+
+      <div>
+
+
+        <div class="childrenKindTitle">Modules</div>
+        <ul>
+
+    <li class="">
+
+
+
+
+
+            <div class="itemName"><code><a href="polygeist.CNN.html" class="internal-link" title="polygeist.CNN">CNN</a></code>
+            </div>
+
+
+    </li><li class="">
+
+
+
+
+
+            <div class="itemName"><code><a href="polygeist.colour.html" class="internal-link" title="polygeist.colour">colour</a></code>
+            </div>
+
+
+    </li><li class="">
+
+
+
+
+
+            <div class="itemName"><code><a href="polygeist.data_faker.html" class="internal-link" title="polygeist.data_faker">data<wbr></wbr>_faker</a></code>
+            </div>
+
+
+    </li><li class="">
+
+
+
+
+
+            <div class="itemName"><code><a href="polygeist.slidecore.html" class="internal-link" title="polygeist.slidecore">slidecore</a></code>
+            </div>
+
+
+    </li><li class="">
+
+
+
+
+
+            <div class="itemName"><code><a href="polygeist.virtualscope.html" class="internal-link" title="polygeist.virtualscope">virtualscope</a></code>
+            </div>
+
+
+    </li><li class="">
+
+
+
+
+
+            <div class="itemName"><code><a href="polygeist.label.html" class="internal-link" title="polygeist.label">label</a></code>
+            </div>
+
+
+    </li><li class="">
+
+
+
+
+
+            <div class="itemName"><code><a href="polygeist.microscope.html" class="internal-link" title="polygeist.microscope">microscope</a></code>
+            </div>
+
+
+    </li><li class="">
+
+
+
+
+
+            <div class="itemName"><code><a href="polygeist.preprocess.html" class="internal-link" title="polygeist.preprocess">preprocess</a></code>
+            </div>
+
+
+    </li><li class="">
+
+
+
+
+
+            <div class="itemName"><code><a href="polygeist.training.html" class="internal-link" title="polygeist.training">training</a></code>
+            </div>
+
+
+    </li><li class=" thisobject">
+
+
+
+
+
+            <div class="itemName"><code><a href="polygeist.utils.html" class="internal-link" title="polygeist.utils">utils</a></code>
+            </div>
+
+
+    </li><li class="">
+
+
+
+
+
+            <div class="itemName"><code><a href="polygeist.validation.html" class="internal-link" title="polygeist.validation">validation</a></code>
+            </div>
+
+
+    </li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </div>
+  </div>
+
+</nav>
+        </div>
+        <div id="collapseSideBar">
+          <a class="btn btn-link" onclick="toggleSideBarCollapse()" title="Toggle Sidebar Collapse">
+          </a>
+        </div>
+        <script src="sidebartoggle.js" type="text/javascript"></script>
+
+      </div>
+
+      <div id="main" class="">
+
+
+
+
+        <div class="page-header">
+          <h1 class="module"><code><code><a href="index.html" class="internal-link">polygeist</a></code><wbr></wbr>.<code><a href="polygeist.utils.html" class="internal-link" title="polygeist.utils">utils</a></code></code></h1>
+          <div id="showPrivate">
+            <button class="btn btn-link" onclick="togglePrivate()">Toggle Private API</button>
+          </div>
+        </div>
+
+        <div class="categoryHeader">
+          module documentation
+        </div>
+
+        <div class="extrasDocstring">
+
+          <p></p>
+        </div>
+
+        <div class="moduleDocstring">
+          <div><p class="undocumented">Undocumented</p></div>
+        </div>
+
+        <div id="splitTables">
+          <table class="children sortable" id="id28">
+
+
+  <tr class="class">
+
+    <td>Class</td>
+    <td><code><a href="polygeist.utils.SegmentationFilesDirectoryHandler.html" class="internal-link" title="polygeist.utils.SegmentationFilesDirectoryHandler"><wbr></wbr>Segmentation<wbr></wbr>Files<wbr></wbr>Directory<wbr></wbr>Handler</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="function">
+
+    <td>Function</td>
+    <td><code><a href="#calc_median_score_list" class="internal-link" title="polygeist.utils.calc_median_score_list">calc<wbr></wbr>_median<wbr></wbr>_score<wbr></wbr>_list</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="function">
+
+    <td>Function</td>
+    <td><code><a href="#collect_cases" class="internal-link" title="polygeist.utils.collect_cases">collect<wbr></wbr>_cases</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="function">
+
+    <td>Function</td>
+    <td><code><a href="#copy_file" class="internal-link" title="polygeist.utils.copy_file">copy<wbr></wbr>_file</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="function">
+
+    <td>Function</td>
+    <td><code><a href="#evaluate_threshold_sweep" class="internal-link" title="polygeist.utils.evaluate_threshold_sweep">evaluate<wbr></wbr>_threshold<wbr></wbr>_sweep</a></code></td>
+    <td>Sweep through <tt class="rst-docutils literal">steps</tt> possible thresholds, between 0 and the max value in the distribution (or <tt class="rst-docutils literal">max_score</tt>, if given), and evaluate the hit and false alarm rate at each point. Yields a generator of hit-rate (recall/TPR), false positive rate, accuracy, precision, sensitivity, and f1 score...</td>
+  </tr><tr class="function">
+
+    <td>Function</td>
+    <td><code><a href="#get_case_and_slide" class="internal-link" title="polygeist.utils.get_case_and_slide">get<wbr></wbr>_case<wbr></wbr>_and<wbr></wbr>_slide</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="function">
+
+    <td>Function</td>
+    <td><code><a href="#load_filenames_and_generate_conditions" class="internal-link" title="polygeist.utils.load_filenames_and_generate_conditions">load<wbr></wbr>_filenames<wbr></wbr>_and<wbr></wbr>_generate<wbr></wbr>_conditions</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="function">
+
+    <td>Function</td>
+    <td><code><a href="#load_jsons_from_directory" class="internal-link" title="polygeist.utils.load_jsons_from_directory">load<wbr></wbr>_jsons<wbr></wbr>_from<wbr></wbr>_directory</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="function">
+
+    <td>Function</td>
+    <td><code><a href="#make_path" class="internal-link" title="polygeist.utils.make_path">make<wbr></wbr>_path</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="function">
+
+    <td>Function</td>
+    <td><code><a href="#plot_roc" class="internal-link" title="polygeist.utils.plot_roc">plot<wbr></wbr>_roc</a></code></td>
+    <td>Plot an ROC curve for the given matched and non-matched scores :param matched: A numpy array of matched scores :param non_matched: A numpy array of non-matched scores :param label: The label for the plotted line :param title: The title for graph :param axes: The axes to use for the plot; if None, new axes will be made :param steps: The number of steps to use for the plot (# bins) :param verbose: When true, output information about threshold values :param max_value: Use this to override the max score to consider (useful for zooming the bins on the low FA area) :return: The axes used for the plot...</td>
+  </tr><tr class="function">
+
+    <td>Function</td>
+    <td><code><a href="#region_count_score_list" class="internal-link" title="polygeist.utils.region_count_score_list">region<wbr></wbr>_count<wbr></wbr>_score<wbr></wbr>_list</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="constant">
+
+    <td>Constant</td>
+    <td><code><a href="#AD" class="internal-link" title="polygeist.utils.AD">AD</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="constant">
+
+    <td>Constant</td>
+    <td><code><a href="#CONTROL" class="internal-link" title="polygeist.utils.CONTROL">CONTROL</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="constant">
+
+    <td>Constant</td>
+    <td><code><a href="#MSA" class="internal-link" title="polygeist.utils.MSA">MSA</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="constant">
+
+    <td>Constant</td>
+    <td><code><a href="#PD" class="internal-link" title="polygeist.utils.PD">PD</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr>
+</table>
+
+
+
+        </div>
+
+        <div id="childList">
+          <div class="basefunction">
+
+
+  <a name="polygeist.utils.calc_median_score_list">
+
+  </a>
+  <a name="calc_median_score_list">
+
+  </a>
+  <div class="functionHeader">
+
+    <span class="py-keyword">def</span> <span class="py-defname">calc_median_score_list</span>(cases, path, rgb_threshold=20):
+
+  </div>
+  <div class="docstring functionBody">
+
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="basefunction">
+
+
+  <a name="polygeist.utils.collect_cases">
+
+  </a>
+  <a name="collect_cases">
+
+  </a>
+  <div class="functionHeader">
+
+    <span class="py-keyword">def</span> <span class="py-defname">collect_cases</span>(config):
+
+  </div>
+  <div class="docstring functionBody">
+
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="basefunction">
+
+
+  <a name="polygeist.utils.copy_file">
+
+  </a>
+  <a name="copy_file">
+
+  </a>
+  <div class="functionHeader">
+
+    <span class="py-keyword">def</span> <span class="py-defname">copy_file</span>(source, dest):
+
+  </div>
+  <div class="docstring functionBody">
+
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="basefunction">
+
+
+  <a name="polygeist.utils.evaluate_threshold_sweep">
+
+  </a>
+  <a name="evaluate_threshold_sweep">
+
+  </a>
+  <div class="functionHeader">
+
+    <span class="py-keyword">def</span> <span class="py-defname">evaluate_threshold_sweep</span>(steps, matched, non_matched, verbose=False, max_value=None):
+
+  </div>
+  <div class="docstring functionBody">
+
+    <div><p>Sweep through <tt class="rst-docutils literal">steps</tt> possible thresholds, between 0 and the max value in the distribution (or <tt class="rst-docutils literal">max_score</tt>, if given), and evaluate the hit and false alarm rate at each point. Yields a generator of hit-rate (recall/TPR), false positive rate, accuracy, precision, sensitivity, and f1 score</p>
+<table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">steps:</span><code>int</code></td><td class="fieldArgDesc">The number of thresholds to test</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">matched:</span><code>np.ndarray</code></td><td class="fieldArgDesc">The distribution of match scores</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">non<wbr></wbr>_matched:</span><code>np.ndarray</code></td><td class="fieldArgDesc">The distribution of non-match s ores</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">verbose:</span><code>bool</code></td><td class="fieldArgDesc">Set to <tt class="rst-docutils literal">True</tt> to make this method print out the score information for each threshold</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">max<wbr></wbr>_value:</span><code>float</code></td><td class="fieldArgDesc">Set to any float to override the maximum score value derived from the match/non-match distributions</td></tr><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td class="fieldArgContainer"><code>Iterable[<wbr></wbr>Tuple[<wbr></wbr>float, <wbr></wbr>float, <wbr></wbr>float, <wbr></wbr>float, <wbr></wbr>float, <wbr></wbr>float]]</code></td><td class="fieldArgDesc"><span class="undocumented">Undocumented</span></td></tr></table></div>
+  </div>
+</div><div class="basefunction">
+
+
+  <a name="polygeist.utils.get_case_and_slide">
+
+  </a>
+  <a name="get_case_and_slide">
+
+  </a>
+  <div class="functionHeader">
+
+    <span class="py-keyword">def</span> <span class="py-defname">get_case_and_slide</span>(fname):
+
+  </div>
+  <div class="docstring functionBody">
+
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="basefunction">
+
+
+  <a name="polygeist.utils.load_filenames_and_generate_conditions">
+
+  </a>
+  <a name="load_filenames_and_generate_conditions">
+
+  </a>
+  <div class="functionHeader">
+
+    <span class="py-keyword">def</span> <span class="py-defname">load_filenames_and_generate_conditions</span>(list_filename):
+
+  </div>
+  <div class="docstring functionBody">
+
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="basefunction">
+
+
+  <a name="polygeist.utils.load_jsons_from_directory">
+
+  </a>
+  <a name="load_jsons_from_directory">
+
+  </a>
+  <div class="functionHeader">
+
+    <span class="py-keyword">def</span> <span class="py-defname">load_jsons_from_directory</span>(directory):
+
+  </div>
+  <div class="docstring functionBody">
+
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="basefunction">
+
+
+  <a name="polygeist.utils.make_path">
+
+  </a>
+  <a name="make_path">
+
+  </a>
+  <div class="functionHeader">
+
+    <span class="py-keyword">def</span> <span class="py-defname">make_path</span>(path):
+
+  </div>
+  <div class="docstring functionBody">
+
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="basefunction">
+
+
+  <a name="polygeist.utils.plot_roc">
+
+  </a>
+  <a name="plot_roc">
+
+  </a>
+  <div class="functionHeader">
+
+    <span class="py-keyword">def</span> <span class="py-defname">plot_roc</span>(matched, non_matched, label=<span class="rst-variable-quote">'</span><span class="rst-variable-string">ROC</span><span class="rst-variable-quote">'</span>, title=<span class="rst-variable-quote">'</span><span class="rst-variable-string">ROC Curve</span><span class="rst-variable-quote">'</span>, axes=None, steps=1000, verbose=False, max_value=None):
+
+  </div>
+  <div class="docstring functionBody">
+
+    <div><p>Plot an ROC curve for the given matched and non-matched scores :param matched: A numpy array of matched scores :param non_matched: A numpy array of non-matched scores :param label: The label for the plotted line :param title: The title for graph :param axes: The axes to use for the plot; if None, new axes will be made :param steps: The number of steps to use for the plot (# bins) :param verbose: When true, output information about threshold values :param max_value: Use this to override the max score to consider (useful for zooming the bins on the low FA area) :return: The axes used for the plot</p>
+<table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">matched:</span><code>np.ndarray</code></td><td class="fieldArgDesc"><span class="undocumented">Undocumented</span></td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">non<wbr></wbr>_matched:</span><code>np.ndarray</code></td><td class="fieldArgDesc"><span class="undocumented">Undocumented</span></td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">label</span></td><td class="fieldArgDesc"><span class="undocumented">Undocumented</span></td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">title</span></td><td class="fieldArgDesc"><span class="undocumented">Undocumented</span></td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">axes</span></td><td class="fieldArgDesc"><span class="undocumented">Undocumented</span></td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">steps</span></td><td class="fieldArgDesc"><span class="undocumented">Undocumented</span></td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">verbose</span></td><td class="fieldArgDesc"><span class="undocumented">Undocumented</span></td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">max<wbr></wbr>_value</span></td><td class="fieldArgDesc"><span class="undocumented">Undocumented</span></td></tr></table></div>
+  </div>
+</div><div class="basefunction">
+
+
+  <a name="polygeist.utils.region_count_score_list">
+
+  </a>
+  <a name="region_count_score_list">
+
+  </a>
+  <div class="functionHeader">
+
+    <span class="py-keyword">def</span> <span class="py-defname">region_count_score_list</span>(cases, results):
+
+  </div>
+  <div class="docstring functionBody">
+
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="baseconstant">
+
+
+  <a name="polygeist.utils.AD">
+
+  </a>
+  <a name="AD">
+
+  </a>
+  <div class="functionHeader">
+
+    <span class="py-defname">AD</span>: <code>str</code> =
+
+  </div>
+  <div class="functionBody">
+
+    <div><p class="undocumented">Undocumented</p></div>
+    <table class="valueTable"><tr class="fieldStart"><td class="fieldName">Value</td></tr><tr><td><pre class="constant-value"><code><span class="rst-variable-quote">'</span><span class="rst-variable-string">AD</span><span class="rst-variable-quote">'</span></code></pre></td></tr></table>
+  </div>
+</div><div class="baseconstant">
+
+
+  <a name="polygeist.utils.CONTROL">
+
+  </a>
+  <a name="CONTROL">
+
+  </a>
+  <div class="functionHeader">
+
+    <span class="py-defname">CONTROL</span>: <code>str</code> =
+
+  </div>
+  <div class="functionBody">
+
+    <div><p class="undocumented">Undocumented</p></div>
+    <table class="valueTable"><tr class="fieldStart"><td class="fieldName">Value</td></tr><tr><td><pre class="constant-value"><code><span class="rst-variable-quote">'</span><span class="rst-variable-string">C</span><span class="rst-variable-quote">'</span></code></pre></td></tr></table>
+  </div>
+</div><div class="baseconstant">
+
+
+  <a name="polygeist.utils.MSA">
+
+  </a>
+  <a name="MSA">
+
+  </a>
+  <div class="functionHeader">
+
+    <span class="py-defname">MSA</span>: <code>str</code> =
+
+  </div>
+  <div class="functionBody">
+
+    <div><p class="undocumented">Undocumented</p></div>
+    <table class="valueTable"><tr class="fieldStart"><td class="fieldName">Value</td></tr><tr><td><pre class="constant-value"><code><span class="rst-variable-quote">'</span><span class="rst-variable-string">MSA</span><span class="rst-variable-quote">'</span></code></pre></td></tr></table>
+  </div>
+</div><div class="baseconstant">
+
+
+  <a name="polygeist.utils.PD">
+
+  </a>
+  <a name="PD">
+
+  </a>
+  <div class="functionHeader">
+
+    <span class="py-defname">PD</span>: <code>str</code> =
+
+  </div>
+  <div class="functionBody">
+
+    <div><p class="undocumented">Undocumented</p></div>
+    <table class="valueTable"><tr class="fieldStart"><td class="fieldName">Value</td></tr><tr><td><pre class="constant-value"><code><span class="rst-variable-quote">'</span><span class="rst-variable-string">PD</span><span class="rst-variable-quote">'</span></code></pre></td></tr></table>
+  </div>
+</div>
+        </div>
+
+      </div>
+    </div>
+
+    <footer class="navbar navbar-default">
+
+
+  <div class="container">
+    <a href="index.html">API Documentation</a> for polygeist,
+  generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a>
+    22.7.0 at 2023-03-29 09:44:48.
+  </div>
+
+  <!-- Search related scripts needs to be loaded at the end of HTML
+    parsing not to introduce overhead and display HTML data asap -->
+  <script src="ajax.js" type="text/javascript"></script>
+  <script src="searchlib.js" type="text/javascript"></script>
+  <script src="search.js" type="text/javascript"></script>
+
+</footer>
+
+    <script src="pydoctor.js" type="text/javascript"></script>
+
+  </body>
+</html>

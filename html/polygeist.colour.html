@@ -1,0 +1,596 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+          "DTD/xhtml1-strict.dtd">
+<html>
+
+
+  <head>
+
+    <title>polygeist.colour</title>
+    <meta name="generator" content="pydoctor 22.7.0">
+
+    </meta>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1" />
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="apidocs.css" />
+    <link rel="stylesheet" type="text/css" href="extra.css" />
+</head>
+
+  <body>
+
+
+
+    <nav class="navbar navbar-default mainnavbar">
+
+
+  <div class="container-fluid">
+
+
+    <div class="navbar-header">
+
+      <div class="navlinks">
+        <span class="navbar-brand">
+          polygeist <a href="index.html">API Documentation</a>
+        </span>
+
+        <a href="moduleIndex.html">
+          Modules
+        </a>
+
+        <a href="classIndex.html">
+          Classes
+        </a>
+
+        <a href="nameIndex.html">
+          Names
+        </a>
+
+        <div id="search-box-container">
+          <div class="input-group">
+            <input id="search-box" type="search" name="search-query" placeholder="Search..." aria-label="Search" minlength="2" class="form-control" autocomplete="off" />
+
+            <span class="input-group-btn">
+              <a style="display: none;" class="btn btn-default" id="search-clear-button" title="Clear" onclick="clearSearch()"><img src="fonts/x-circle.svg" alt="Clear" /></a>
+              <a class="btn btn-default" id="search-help-button" title="Help" onclick="toggleSearchHelpText()"><img src="fonts/info.svg" alt="Help" /></a>
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+      <div id="search-results-container" style="display: none;">
+
+        <div id="search-buttons">
+          <span class="label label-default" id="search-docstrings-button">
+          <label class="checkbox-inline">
+            <input type="checkbox" id="toggle-search-in-docstrings-checkbox" value="false" onclick="toggleSearchInDocstrings()">
+              search in docstrings
+            </input>
+          </label>
+          </span>
+
+        </div>
+
+        <noscript>
+            <h1>Cannot search: JavaScript is not supported/enabled in your browser.</h1>
+        </noscript>
+
+        <div class="hint" id="search-help-box">
+          <p class="rst-last">
+
+            Search bar offers the following options:
+            <ul>
+                <li>
+                  <strong>Term presence.</strong> The below example searches for documents that
+                    must contain “foo”, might contain “bar” and must not contain “baz”: <code>+foo bar -baz</code>
+                </li>
+
+                <li>
+                  <strong>Wildcards.</strong> The below example searches for documents with words beginning with “foo”: <code>foo*</code>
+                </li>
+
+                <li>
+                  <strong>Search in specific fields.</strong> The following search matches all objects
+                  in "twisted.mail" that matches “search”: <code>+qname:twisted.mail.* +search</code>
+
+                  <p>
+                    Possible fields: 'name', 'qname' (fully qualified name), 'docstring', and 'kind'.
+                    Last two fields are only applicable if "search in docstrings" is enabled.
+                  </p>
+                </li>
+
+                <li>
+                  <strong>Fuzzy matches.</strong> The following search matches all documents
+                  that have a word within 1 edit distance of “foo”: <code>foo~1</code>
+                </li>
+            </ul>
+
+          </p>
+        </div>
+
+        <div id="search-status"> </div>
+
+        <div class="warning" id="search-warn-box" style="display: none;">
+          <p class="rst-last"><span id="search-warn"></span></p>
+        </div>
+
+        <table id="search-results">
+          <!-- Filled dynamically by JS -->
+        </table>
+
+        <div style="margin-top: 8px;">
+          <p>Results provided by <a href="https://lunrjs.com">Lunr.js</a></p>
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+</nav>
+
+    <div class="container-fluid">
+
+      <!-- Side navigation -->
+      <div class="sidebarcontainer" style="display: none;">
+
+        <div class="sidebar"><nav class="sidebar">
+
+
+  <div>
+
+      <div class="thingTitle">
+        <span>Package</span>
+        <code class="thisobject"><a href="polygeist.colour.html" class="internal-link" title="This package">colour</a></code>
+      </div>
+
+      <div>
+
+
+
+
+
+        <div class="childrenKindTitle">Classes</div>
+        <ul>
+
+    <li class="">
+
+
+
+
+
+            <div class="itemName"><code><a href="polygeist.colour.CMFs.html" class="internal-link" title="polygeist.colour.CMFs"><wbr></wbr>CMFs</a></code>
+            </div>
+
+
+    </li><li class="">
+
+
+
+
+
+            <div class="itemName"><code><a href="polygeist.colour.ColourTests.html" class="internal-link" title="polygeist.colour.ColourTests"><wbr></wbr>Colour<wbr></wbr>Tests</a></code>
+            </div>
+
+
+    </li><li class="">
+
+
+
+
+
+            <div class="itemName"><code><a href="polygeist.colour.Convert.html" class="internal-link" title="polygeist.colour.Convert"><wbr></wbr>Convert</a></code>
+            </div>
+
+
+    </li><li class="">
+
+
+
+
+
+            <div class="itemName"><code><a href="polygeist.colour.Illuminant.html" class="internal-link" title="polygeist.colour.Illuminant"><wbr></wbr>Illuminant</a></code>
+            </div>
+
+
+    </li>
+</ul>
+
+        <div class="childrenKindTitle">Functions</div>
+        <ul>
+
+    <li class="">
+
+
+
+
+
+            <div class="itemName"><code><a href="#integrate" class="internal-link" title="polygeist.colour.integrate">integrate</a></code>
+            </div>
+
+
+    </li>
+</ul>
+
+
+
+
+        <div class="childrenKindTitle">Variables</div>
+        <ul>
+
+    <li class="">
+
+
+
+
+
+            <div class="itemName"><code><a href="#path_to_library_dir" class="internal-link" title="polygeist.colour.path_to_library_dir">path<wbr></wbr>_to<wbr></wbr>_library<wbr></wbr>_dir</a></code>
+            </div>
+
+
+    </li><li class="">
+
+
+
+
+
+            <div class="itemName"><code><a href="#visible_range" class="internal-link" title="polygeist.colour.visible_range">visible<wbr></wbr>_range</a></code>
+            </div>
+
+
+    </li><li class="">
+
+
+
+
+
+            <div class="itemName"><code><a href="#visible_range_nm" class="internal-link" title="polygeist.colour.visible_range_nm">visible<wbr></wbr>_range<wbr></wbr>_nm</a></code>
+            </div>
+
+
+    </li>
+</ul>
+
+
+
+
+      </div>
+  </div><div>
+
+      <div class="thingTitle">
+        <span>Package</span>
+        <code><a href="index.html" class="internal-link" title="The parent of this package">polygeist</a></code>
+      </div>
+
+      <div>
+
+
+        <div class="childrenKindTitle">Modules</div>
+        <ul>
+
+    <li class="">
+
+
+
+
+
+            <div class="itemName"><code><a href="polygeist.CNN.html" class="internal-link" title="polygeist.CNN">CNN</a></code>
+            </div>
+
+
+    </li><li class=" thisobject">
+
+
+
+
+
+            <div class="itemName"><code><a href="polygeist.colour.html" class="internal-link" title="polygeist.colour">colour</a></code>
+            </div>
+
+
+    </li><li class="">
+
+
+
+
+
+            <div class="itemName"><code><a href="polygeist.data_faker.html" class="internal-link" title="polygeist.data_faker">data<wbr></wbr>_faker</a></code>
+            </div>
+
+
+    </li><li class="">
+
+
+
+
+
+            <div class="itemName"><code><a href="polygeist.slidecore.html" class="internal-link" title="polygeist.slidecore">slidecore</a></code>
+            </div>
+
+
+    </li><li class="">
+
+
+
+
+
+            <div class="itemName"><code><a href="polygeist.virtualscope.html" class="internal-link" title="polygeist.virtualscope">virtualscope</a></code>
+            </div>
+
+
+    </li><li class="">
+
+
+
+
+
+            <div class="itemName"><code><a href="polygeist.label.html" class="internal-link" title="polygeist.label">label</a></code>
+            </div>
+
+
+    </li><li class="">
+
+
+
+
+
+            <div class="itemName"><code><a href="polygeist.microscope.html" class="internal-link" title="polygeist.microscope">microscope</a></code>
+            </div>
+
+
+    </li><li class="">
+
+
+
+
+
+            <div class="itemName"><code><a href="polygeist.preprocess.html" class="internal-link" title="polygeist.preprocess">preprocess</a></code>
+            </div>
+
+
+    </li><li class="">
+
+
+
+
+
+            <div class="itemName"><code><a href="polygeist.training.html" class="internal-link" title="polygeist.training">training</a></code>
+            </div>
+
+
+    </li><li class="">
+
+
+
+
+
+            <div class="itemName"><code><a href="polygeist.utils.html" class="internal-link" title="polygeist.utils">utils</a></code>
+            </div>
+
+
+    </li><li class="">
+
+
+
+
+
+            <div class="itemName"><code><a href="polygeist.validation.html" class="internal-link" title="polygeist.validation">validation</a></code>
+            </div>
+
+
+    </li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </div>
+  </div>
+
+</nav>
+        </div>
+        <div id="collapseSideBar">
+          <a class="btn btn-link" onclick="toggleSideBarCollapse()" title="Toggle Sidebar Collapse">
+          </a>
+        </div>
+        <script src="sidebartoggle.js" type="text/javascript"></script>
+
+      </div>
+
+      <div id="main" class="">
+
+
+
+
+        <div class="page-header">
+          <h1 class="package"><code><code><a href="index.html" class="internal-link">polygeist</a></code><wbr></wbr>.<code><a href="polygeist.colour.html" class="internal-link" title="polygeist.colour">colour</a></code></code></h1>
+          <div id="showPrivate">
+            <button class="btn btn-link" onclick="togglePrivate()">Toggle Private API</button>
+          </div>
+        </div>
+
+        <div class="categoryHeader">
+          package documentation
+        </div>
+
+        <div class="extrasDocstring">
+
+          <p></p>
+        </div>
+
+        <div class="moduleDocstring">
+          <div><p>Polygeist Colour Transforms Library Copyright 2023 Polygeist LTD Author: blitmaps</p>
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
+<p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
+<p>THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+</div>
+        </div>
+
+        <div id="splitTables">
+
+
+
+            <p class="fromInitPy">From <code>__init__.py</code>:</p><table class="children sortable" id="id5">
+
+
+  <tr class="class">
+
+    <td>Class</td>
+    <td><code><a href="polygeist.colour.CMFs.html" class="internal-link" title="polygeist.colour.CMFs"><wbr></wbr>CMFs</a></code></td>
+    <td>Contains the standard colour matching functions (for humans).</td>
+  </tr><tr class="class">
+
+    <td>Class</td>
+    <td><code><a href="polygeist.colour.ColourTests.html" class="internal-link" title="polygeist.colour.ColourTests"><wbr></wbr>Colour<wbr></wbr>Tests</a></code></td>
+    <td><span class="undocumented">No class docstring; 0/2 instance variable, 8/10 methods documented</span></td>
+  </tr><tr class="class">
+
+    <td>Class</td>
+    <td><code><a href="polygeist.colour.Convert.html" class="internal-link" title="polygeist.colour.Convert"><wbr></wbr>Convert</a></code></td>
+    <td><span class="undocumented">No class docstring; 7/7 static methods documented</span></td>
+  </tr><tr class="class">
+
+    <td>Class</td>
+    <td><code><a href="polygeist.colour.Illuminant.html" class="internal-link" title="polygeist.colour.Illuminant"><wbr></wbr>Illuminant</a></code></td>
+    <td>Contains standard illumination functions, and the means to compute them.</td>
+  </tr><tr class="function">
+
+    <td>Function</td>
+    <td><code><a href="#integrate" class="internal-link" title="polygeist.colour.integrate">integrate</a></code></td>
+    <td>Integrates 2 spectra with the same scale, using the trapezium rule.</td>
+  </tr><tr class="variable">
+
+    <td>Variable</td>
+    <td><code><a href="#path_to_library_dir" class="internal-link" title="polygeist.colour.path_to_library_dir">path<wbr></wbr>_to<wbr></wbr>_library<wbr></wbr>_dir</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="variable">
+
+    <td>Variable</td>
+    <td><code><a href="#visible_range" class="internal-link" title="polygeist.colour.visible_range">visible<wbr></wbr>_range</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="variable">
+
+    <td>Variable</td>
+    <td><code><a href="#visible_range_nm" class="internal-link" title="polygeist.colour.visible_range_nm">visible<wbr></wbr>_range<wbr></wbr>_nm</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr>
+</table>
+        </div>
+
+        <div id="childList">
+          <div class="basevariable">
+
+
+  <a name="polygeist.colour.path_to_library_dir">
+
+  </a>
+  <a name="path_to_library_dir">
+
+  </a>
+  <div class="functionHeader">
+
+    <span class="py-defname">path_to_library_dir</span> =
+
+  </div>
+  <div class="functionBody">
+
+    <div><p class="undocumented">Undocumented</p></div>
+
+  </div>
+</div><div class="basevariable">
+
+
+  <a name="polygeist.colour.visible_range_nm">
+
+  </a>
+  <a name="visible_range_nm">
+
+  </a>
+  <div class="functionHeader">
+
+    <span class="py-defname">visible_range_nm</span>: <code>list[<wbr></wbr>int]</code> =
+
+  </div>
+  <div class="functionBody">
+
+    <div><p class="undocumented">Undocumented</p></div>
+
+  </div>
+</div><div class="basevariable">
+
+
+  <a name="polygeist.colour.visible_range">
+
+  </a>
+  <a name="visible_range">
+
+  </a>
+  <div class="functionHeader">
+
+    <span class="py-defname">visible_range</span> =
+
+  </div>
+  <div class="functionBody">
+
+    <div><p class="undocumented">Undocumented</p></div>
+
+  </div>
+</div><div class="basefunction">
+
+
+  <a name="polygeist.colour.integrate">
+
+  </a>
+  <a name="integrate">
+
+  </a>
+  <div class="functionHeader">
+
+    <span class="py-keyword">def</span> <span class="py-defname">integrate</span>(spectra_a, spectra_b):
+
+  </div>
+  <div class="docstring functionBody">
+
+    <div><p>Integrates 2 spectra with the same scale, using the trapezium rule.</p>
+<table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">spectra<wbr></wbr>_a</span></td><td class="fieldArgDesc">Array of illumination power by nm (np.array)</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">spectra<wbr></wbr>_b</span></td><td class="fieldArgDesc">Array of sensor response by nm  (np.array)</td></tr><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td colspan="2">Sensor response (float)</td></tr></table></div>
+  </div>
+</div>
+        </div>
+
+      </div>
+    </div>
+
+    <footer class="navbar navbar-default">
+
+
+  <div class="container">
+    <a href="index.html">API Documentation</a> for polygeist,
+  generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a>
+    22.7.0 at 2023-03-29 09:44:48.
+  </div>
+
+  <!-- Search related scripts needs to be loaded at the end of HTML
+    parsing not to introduce overhead and display HTML data asap -->
+  <script src="ajax.js" type="text/javascript"></script>
+  <script src="searchlib.js" type="text/javascript"></script>
+  <script src="search.js" type="text/javascript"></script>
+
+</footer>
+
+    <script src="pydoctor.js" type="text/javascript"></script>
+
+  </body>
+</html>
